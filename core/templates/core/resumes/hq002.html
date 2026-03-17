@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>new Resume</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap" rel="stylesheet">
+
+<link href="https://fonts.google.com/specimen/Montserrat?selection.family=Montserrat:wght@100;200;400" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;400&display=swap" rel="stylesheet">
+
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+
+<style>
+
+@font-face {
+    font-family: 'Montserrat';
+   src: url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap");
+    font-style: normal;
+    font-weight: 200;
+}
+
+
+body {
+       height: 842px;
+       width: 750px;
+       margin-left: auto;
+       margin-right: auto;
+}
+
+
+.image{
+  margin-top:2.4rem;
+  margin-left:6rem;
+  width:16.75rem;
+  height:16.75rem;
+  border-radius: 50%;
+}
+
+.left{
+  background: #7373eb;
+}
+
+.contactdetail{
+  margin-left:5rem;
+}
+
+
+
+.skills{
+  margin-left:5rem;
+}
+.skills #myskill{
+  font-family: 'Montserrat', sans-serif;
+  color:white;
+  font-size:11px;
+  font-weight:200;
+}
+
+.dot {
+  height: 8px;
+  width: 8px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot1 {
+  height: 8px;
+  width: 8px;
+  background-color:#bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#myawards{
+    margin-left:5rem;
+	font-family: 'Montserrat', sans-serif;
+	font-size:8px;
+	padding-right:10px;
+	font-weight:200;
+}
+
+
+.name p{
+  font-size:3.6rem;
+  font-style: normal;
+  font-weight: bold;
+  color:#6980A7;
+  margin-top:5rem;
+  margin-left:2.5px;
+}
+
+
+.ul{
+  border-bottom: 2px solid black;
+  margin-left: 2.5px;
+  margin-right:37rem;
+}
+
+
+.projectmanager{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color:#6980A7;
+  margin-left: 2.5px;
+}
+
+
+.personalprofile{
+  font-family: 'Varela Round', sans-serif;
+  margin-left: 2.5px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color:#5ba7d1;
+}
+
+.personalprofiledetail{
+ font-family: 'Montserrat', sans-serif;
+  margin-left: 2.5px;
+  color:#000000;
+  font-size:14px;
+  font-weight: 400;
+}
+
+
+
+.workexperience{
+	font-family: 'Varela Round', sans-serif;
+    margin-left: 2.5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color:#5ba7d1;
+  }
+
+
+
+.workexperiencedetail{
+font-family: 'Montserrat', sans-serif;
+  margin-left:2.5px;
+    font-size: 14px;
+	font-weight: 400;
+}
+
+
+
+
+.education{
+	font-family: 'Varela Round', sans-serif;
+      margin-left: 2.5px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color:#5ba7d1;
+}
+
+.educatinaldetail{
+	font-family: 'Montserrat', sans-serif;
+  margin-left: 2.5px;
+  color:#444440;
+   font-size: 14px;
+   font-weight:400;
+}
+
+
+</style>
+
+
+
+
+
+
+  </head>
+  <body>
+      <div class="row">
+      <div class="col-xs-5">
+        <div class="left">
+
+            <img src="{{ cand.thumbnail_url }}" alt="image" class="image">
+            <br>
+           <br>
+           <br>
+           <br>
+             <p style="font-family: 'Varela Round', sans-serif;font-weight:bold;font-size:1.3rem;color:white;margin-left:5.3rem">CONTACT ME AT</p>
+
+
+
+
+
+             <div class="contactdetail">
+                <i class="fa fa-map-marker" style="color:white"></i>&nbsp;&nbsp;<span style="font-family: 'Montserrat', sans-serif;font-size:11px;font-style:Arial;color:white;padding-right:20px;font-weight:200"> {{cand.hq_user.mobile}}<span>
+                   <br>
+                   <br>
+                <i class="fa fa-envelope" style="color:white"></i>&nbsp;&nbsp;<span style="font-family: 'Montserrat', sans-serif;font-size:11px;font-style:Arial;color:white;font-weight:200"> {{cand.hq_user.email}}<span>
+                    <br>
+                    <br>
+               </div>
+
+
+               <br>
+               <br>
+        <p style="font-family: 'Varela Round', sans-serif;font-weight:bold;font-size:1.3rem;color:white;margin-left:5.3rem">SKILLS SUMMARY</p>
+               <div class="skills">
+                     <div id="myskill">
+                         {% for skill in skills %}
+                       <span class="dot"></span>&nbsp;<span class="dot"></span>&nbsp;<span class="dot"></span>&nbsp;<span class="dot1"></span>&nbsp;<span class="dot1"></span>&nbsp;&nbsp;&nbsp;{{skill.name}}
+                           <br>
+                           <br>
+                         {% endfor %}
+
+                    </div>
+               </div>
+
+
+               <br>
+               <br>
+               <p style="font-family: 'Varela Round', sans-serif;font-weight:bold;font-size:1.3rem;color:white;margin-left:5.3rem">AWARD RECEIVED</p>
+               <div class="awards">
+                     <div id="myawards">
+                         {% for cert in certs %}
+                       <i class="fas fa-bookmark" style="color:white;font-size:12px"></i>&nbsp;&nbsp;<span style="font-size:12px;font-style:Arial;color:white;">{{ cert.title }} by {{ cert.issuer_name }} <span>
+                      <br><br>
+                         {% endfor %}
+                    </div>
+               </div>
+
+
+           <br><br><br><br><br><br><br><br><br><br>
+          </div>
+        </div>
+        <div class="col-xs-7">
+          <div class="name">
+            <p>{{cand.hq_user.name|upper}}</p>
+          </div>
+          <div class="ul">
+          </div>
+
+          <br>
+                <div class="projectmanager">
+                  SENIOR ACCOUNTANT
+                </div>
+
+                <br><br><br>
+
+                <div class="personalprofile">
+                  PERSONAL PROFILE
+                </div>
+                 <div class="personalprofiledetail" >
+                   <br>
+                  {{cand.summary}}
+                 </div>
+
+
+                 <br><br>
+              <div class="workexperience">
+                WORK EXPERIENCE
+              </div>
+                  <br>
+
+              <div class="workexperiencedetail">
+                  {% for job in jobs %}
+                <p style="font-weight:bold">{{ job.designation }}</p>
+                <p style="margin-bottom:20px;margin-top:-10px;font-style;font-size:14px;font-family: 'Montserrat', sans-serif;font-weight:400;
+">{{ job.company }} | {{job.start_date}}-{% if job.end_date %}{{ job.end_date }}{% else %}present{% endif %}</p>
+                      {{ job.summary| safe }}
+
+                   <br>
+                  {% endfor %}
+
+              </div>
+
+
+               <br><br>
+                       <div class="education">
+                         EDUCATIONAL HISTORY
+                       </div>
+                       <br>
+                       <div class="educatinaldetail">
+                           {% for edu in edus %}
+                         <p style="font-weight:bold">{{edu.degree}} - {{edu.major}}</p>
+                         <p style="margin-bottom:20px;margin-top:-10px;font-style;font-size:14px;font-family: 'Montserrat', sans-serif;font-weight:400;
+">{{edu.college}} | {{edu.start_year}}-{{edu.end_year}}</p>
+                               {{ edu.summary | safe }}
+                           {% endfor %}
+                       </div>
+
+         </div>
+      </div>
+  </body>
+</html>

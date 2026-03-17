@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block navbar %}
+    {% include 'core/navbar_fixed.html' %}
+{% endblock %}
+{% block content %}
+    <!-- Page content-->
+      <div class="container py-5 py-md-7">
+        <div class="row align-items-center pt-2">
+          <div class="col-md-6 col-lg-5 mb-5 mb-md-0">
+            <div class="bg-secondary px-4 py-5 p-sm-5 rounded-lg">
+              <h1 class="h3 pt-1">Sign in</h1>
+              <p class="font-size-ms text-muted">Sign in to your account using email and password provided during registration.</p>
+                {% for message in messages %}
+                  <div class="alert {% if message.tags == "error" %}alert-danger{% else %}alert-success{% endif %} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message| safe }}
+                  </div>
+                {% endfor %}
+              <form class="needs-validation" novalidate method="post">
+                  {% csrf_token %}
+
+                <div class="input-group-overlay form-group">
+                  <div class="input-group-prepend-overlay"><span class="input-group-text"><i class="fe-mail"></i></span></div>
+                  <input class="form-control prepended-form-control" type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-group-overlay cs-password-toggle form-group">
+                  <div class="input-group-prepend-overlay"><span class="input-group-text"><i class="fe-lock"></i></span></div>
+                  <input class="form-control prepended-form-control" name="password" type="password" placeholder="Password" required>
+                  <label class="cs-password-toggle-btn">
+                    <input class="custom-control-input" name="remember" type="checkbox"><i class="fe-eye cs-password-toggle-indicator"></i><span class="sr-only">Show password</span>
+                  </label>
+                </div>
+                <div class="d-flex justify-content-between align-items-center form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" id="keep-signed-2">
+                    <label class="custom-control-label" for="keep-signed-2">Keep me signed in</label>
+                  </div><a class="nav-link-style font-size-ms" href="/user/forgot_password">Forgot password?</a>
+                </div>
+                <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+                <div class="border-top text-center mt-4 pt-4">
+                    <p class="font-size-sm font-weight-medium text-heading">New to HireQ? <a href="/register/start">Register here</a></p>
+
+                </div>
+              </form>
+            </div>
+          </div>
+            <div class="col-md-6 offset-xl-1"><img class="d-block mx-auto" src="/static/img/pages/coming-soon/illustration.svg" alt="Illustration"/>
+          </div>
+        </div>
+      </div>
+{% endblock %}

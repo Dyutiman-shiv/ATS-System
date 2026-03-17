@@ -1,0 +1,57 @@
+{% load static %}
+{% load widget_tweaks %}
+                        <div class="modal-content border-0">
+                    <div class="modal-header border-0 bg-dark px-4">
+                        <h4 class="modal-title text-light">Edit Skill</h4>
+                        <button class="close text-light" type="button" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body px-4">
+                        <p class="font-size-ms text-muted">Modify the name and rating of your skill.</p>
+                        <form class="needs-validation" method="post" action="/candidate/edit_skill" novalidate>
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-check-square"></i></span>
+                                    </div>
+                                    <input name="edit_skill_name" class="form-control prepended-form-control" placeholder="Skill Name" value="{{ skill.name }}">
+                                </div>
+                                <input type="hidden" name="edit_pub_id" value="{{ skill.pub_id }}">
+
+                                <div id="full-stars-example-two" class="col form-group text-center mt-n2">
+                                    <div class="rating-group">
+                                        <!--input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio"-->
+                                        <label aria-label="1 star" class="rating__label" for="edit_rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="edit_rating5" id="edit_rating3-1" value="1" type="radio" {% ifequal skill.rating5 1 %}checked{% endifequal %}>
+                                        <label aria-label="2 stars" class="rating__label" for="edit_rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="edit_rating5" id="edit_rating3-2" value="2" type="radio" {% ifequal skill.rating5 2 %}checked{% endifequal %}>
+                                        <label aria-label="3 stars" class="rating__label" for="edit_rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="edit_rating5" id="edit_rating3-3" value="3" type="radio" {% ifequal skill.rating5 3 %}checked{% endifequal %}>
+                                        <label aria-label="4 stars" class="rating__label" for="edit_rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="edit_rating5" id="edit_rating3-4" value="4" type="radio" {% ifequal skill.rating5 4 %}checked{% endifequal %}>
+                                        <label aria-label="5 stars" class="rating__label" for="edit_rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="edit_rating5" id="edit_rating3-5" value="5" type="radio" {% ifequal skill.rating5 5 %}checked{% endifequal %}>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-secondary btn-block" data-dismiss="modal"><span class="fe-arrow-left-circle mr-3"></span> Cancel</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary btn-block" type="submit"><span class="fe-plus-circle mr-3"></span> Save</button>
+                                </div>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                <div class="modal-body text-center px-4 pt-2 pb-4">
+                    <hr>
+                </div>
+            </div>
+

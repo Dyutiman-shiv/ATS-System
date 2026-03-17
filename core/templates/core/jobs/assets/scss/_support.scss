@@ -1,0 +1,41 @@
+/*----------------------------------------*/
+/*  18. SUPPORT CSS START
+/*----------------------------------------*/
+
+.support{
+    &__item{
+        @include box-shadow(0px 3px 1px 0px rgba(11, 6, 70, 0.08));
+        @include border-radius(10px);
+        padding: 35px 60px;
+
+        @media #{$xl}{
+            padding-left: 45px;
+            padding-right: 45px;
+        }
+        @media #{$lg}{
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        @media #{$sm}{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        &:hover{
+            @include box-shadow(0px 30px 70px 0px rgba(11, 6, 70, 0.08));
+        }
+    }
+    &__title{
+        font-size: 15px;
+        color: $w-text;
+        font-weight: 600;
+        margin-bottom: 0;
+        & a{
+            &:hover{
+                color: $w-purple-6;
+            }
+        }
+    }
+    &__icon{
+        min-height: 70px;
+    }
+}

@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block navbar %}
+    {% include 'core/navbar_fixed.html' %}
+{% endblock %}
+{% block content %}
+    <!-- Page content-->
+    <div class="container py-5 py-md-7">
+        <div class="row align-items-center pt-1">
+            <div class="col-md-8 col-lg-6 mb-5 mb-md-0">
+                <div class="bg-secondary px-4 py-5 p-sm-5 rounded-lg">
+                    <h1 class="h3 pt-1">Job Listings</h1>
+                    <ul>
+                        {% for job in jobs %}
+                        <li>
+                            <h2>{{ job.title }}</h2>
+                            <p>{{ job.about }}</p>
+                            <p><strong>Location:</strong> {{ job.location }}</p>
+                            <p><strong>Category:</strong> {{ job.category }}</p>
+                            <p><strong>Skills Required:</strong> {{ job.skills_required }}</p>
+                            <p><strong>Additional Info:</strong> {{ job.additional_info }}</p>
+                            <a href="{% url 'apply' job.pub_id %}" class="btn btn-primary">Apply Now</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 offset-xl-2">
+                <img class="d-block mx-auto" src="{% static 'img/pages/coming-soon/illustration.svg' %}" alt="Illustration"/>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block body_end %}
+  <script>
+    $(document).on('ready', function () {
+        // Select US location
+        var endpoint = 'http://ip-api.com/json/?fields=status,message,countryCode';
+        $.getJSON(endpoint,function (data) {
+            if(data.status !== 'success') {
+                console.log('query failed: ' + response.message);
+            }
+            if (data.countryCode == "US"){
+                $("#id_country").val(data.countryCode).change();
+            }
+        });
+    });
+  </script>
+{% endblock %}

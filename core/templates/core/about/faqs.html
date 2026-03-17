@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block navbar %}
+    {% include 'core/navbar_light.html' %}
+{% endblock %}
+{% block content %}
+    <!-- FAQ-->
+      <section class="container py-5 my-4 my-sm-0 py-sm-6 py-md-7">
+        <h2 class="text-center pb-2 mb-5">Frequently Asked Questions (FAQs)</h2>
+        <div class="row pb-2">
+          <div class="col-lg-7">
+            <div class="accordion accordion-alt" id="faq-accordion">
+              <div class="card border-0 box-shadow">
+                <div class="card-header">
+                  <h3 class="accordion-heading"><a class="collapsed" href="#questionOne" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="questionOne">Do I need a different version of resume for each job role I am applying?<span class="accordion-indicator"></span></a></h3>
+                </div>
+                <div class="collapse" id="questionOne" data-parent="#faq-accordion">
+                  <div class="card-body font-size-md">No, not always. You don’t have to change your resume every time you apply to a job, especially if the jobs you’re applying, are similar.</div>
+                </div>
+              </div>
+              <div class="card border-0 box-shadow card-active">
+                <div class="card-header">
+                  <h3 class="accordion-heading"><a href="#questionTwo" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="questionTwo">In what format do I receive my completed resume?<span class="accordion-indicator"></span></a></h3>
+                </div>
+                <div class="collapse show" id="questionTwo" data-parent="#faq-accordion">
+                  <div class="card-body font-size-md">The resume can be edited and customised on the platform and is then downloadable in the PDF format.</div>
+                </div>
+              </div>
+              <div class="card border-0 box-shadow">
+                <div class="card-header">
+                  <h3 class="accordion-heading"><a class="collapsed" href="#questionThree" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="questionThree">Will I be notified for all the job openings?<span class="accordion-indicator"></span></a></h3>
+                </div>
+                <div class="collapse" id="questionThree" data-parent="#faq-accordion">
+                  <div class="card-body font-size-md">No, you will be notified on the job openings based on your profile only. You can also choose to unsubscribe from the notifications, in case you have already found a job.</div>
+                </div>
+              </div>
+              <div class="card border-0 box-shadow">
+                <div class="card-header">
+                  <h3 class="accordion-heading"><a class="collapsed" href="#questionFour" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="questionFour">How will a verified resume help me?<span class="accordion-indicator"></span></a></h3>
+                </div>
+                <div class="collapse" id="questionFour" data-parent="#faq-accordion">
+                  <div class="card-body font-size-md">A verified resume creates a greater impact and certainly adds credibility to your profile. Candidates have seen significantly improved conversions with a verified resumes.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-none d-lg-block col-lg-4 offset-lg-1"><img src="/static/img/demo/booking/illustration.svg" alt="Illustration"/>
+          </div>
+        </div>
+      </section>
+{% endblock %}

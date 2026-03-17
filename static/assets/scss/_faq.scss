@@ -1,0 +1,130 @@
+/*----------------------------------------*/
+/*  11. FAQ CSS START
+/*----------------------------------------*/
+
+.faq{
+    &__wrapper{
+        padding: 0 40px;
+        border-top: 3px solid $w-blue;
+        box-shadow: 0px 30px 70px 0px rgba(11, 6, 70, 0.08),inset 0px 3px 0px 0px rgba(47, 128, 237, 0.004);
+        @media #{$xs}{
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        @include border-radius(20px);
+        & .accordion-item{
+            padding-top: 35px;
+            padding-bottom: 35px;
+            border-bottom: 1px solid $border-3;
+            &.border-none{
+                border-bottom: none;
+                padding-bottom: 35px;
+            }
+            & .accordion-header{
+                & .accordion-button{
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: $black-3;
+                    border: none;
+                    padding: 0;
+                    background: none;
+                    text-align: left;
+                    @media #{$xs}{
+                        padding-right: 15px;
+
+                    }
+                    &::after{
+                        position: absolute;
+                        right: 0;
+                        top: 50%;
+                        @include transform(translateY(-50%));
+                        font-family: $fontawesome;
+                        font-size: 18px;
+                        color: $black-2;
+                        background-image: none;
+                        font-weight: 500;
+                        content: '\f068';
+                    }
+                    
+                    &:focus{
+                        box-shadow: none;
+                    }
+                    &.collapsed{
+                        &::after{
+                            content: '\f067';
+                        }
+                    }
+                    &:hover{
+                        color: $w-blue;
+                        &::after{
+                            color: $w-blue;
+                        }
+                    }
+                }
+            }
+            & .accordion-body{
+                padding: 0;
+                padding-top: 20px;
+                & p{
+                    font-size: 15px;
+                    color: $w-text-5;
+                    font-weight: 600;
+                    margin-bottom: 0;
+                }
+            }
+            & .accordion-collapse{
+                border: none;
+            }
+        }
+    }
+    &__counter{
+        & ul{
+            & li{
+                display: inline-block;
+                @media #{$xs}{
+                    display: block;
+                    margin-bottom: 30px;
+                }
+                &:not(:last-child){
+                    margin-right: 40px;
+                    @media #{$xs}{
+                        margin-right: 20px;
+                    }
+                }
+                & h3{
+                    color: $black-2;
+                    font-size: 40px;
+                    margin-bottom: 3px;
+                    & span{
+                        font-weight: 700;
+                    }
+                    &.pink{
+                        color: $w-pink-4;
+                    }
+                    &.blue{
+                        color: $w-blue-4;
+                    }
+                    &.yellow{
+                        color: $w-yellow-2;
+                    }
+                }
+                & p{
+                    font-weight: 600;
+                    color: $w-text-5;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    &__content{
+        @media #{$md}{
+            margin-top: 60px;
+        }
+        @media #{$sm}{
+            margin-top: 60px;
+        }
+        @media #{$xs}{
+            margin-top: 60px;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{% extends "admin/change_list.html" %}
+{% block object-tools %}
+    <div>
+        <form id="link-form" method="post" action="{% url 'admin:generate_referral_link' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" id="generate-button">Generate & Copy Link</button>
+        </form>
+        {% if generated_link %}
+            <div style="display: flex;">
+                <input type="text" value="{{ generated_link }}" id="referral_url" readonly style="width: calc(100% - 80px); margin-right: 10px;"/>
+                <button onclick="copyURL()" style="width: 70px;">Copy</button>
+            </div>
+        {% endif %}
+    </div>
+    <script>
+        function copyURL() {
+            var copyText = document.getElementById("referral_url");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+            alert("Copied the referral URL!");
+        }
+    </script>
+    {{ block.super }}
+{% endblock %}

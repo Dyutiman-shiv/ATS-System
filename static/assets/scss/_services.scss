@@ -1,0 +1,529 @@
+/*----------------------------------------*/
+/*  03. SERVICES CSS START
+/*----------------------------------------*/
+
+.services{
+    &__item{
+        @include border-radius(20px);
+        @include box-shadow(0px 30px 70px 0px rgba(11, 6, 70, 0.08));
+        position: relative;
+        padding: 40px 50px;
+        padding-bottom: 35px;
+        position: relative;
+        z-index: 1;
+
+        @media #{$lg}{
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        &.active,
+        &:hover{
+            box-shadow: 0px 20px 60px 0px rgba(15, 0, 40, 0.2),inset 0px 3px 0px 0px rgba(113, 39, 234, 0.004);
+        }
+
+        &-2{
+            padding: 50px 47px;
+            padding-right: 70px;
+            @include box-shadow( 0px 40px 70px 0px rgba(1, 19, 44, 0.08));
+            @include border-radius(20px);
+            position: relative;
+            z-index: 1;
+
+        }
+        &-3{
+            padding: 40px 75px;
+            @include box-shadow(0px 10px 60px 0px rgba(10, 0, 48, 0.08));
+            @include border-radius(6px);
+
+            @media #{$lg}{
+                padding-left: 45px;
+                padding-right: 45px;
+            }
+            @media #{$xs}{
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+            &:hover{
+                @include transform(translateY(-20px));
+            }
+        }
+        &-4{
+            padding: 40px 60px;
+            @include box-shadow(0px 30px 70px 0px rgba(11, 6, 70, 0.08));
+            @include border-radius(6px);
+            @media #{$md}{
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+            @media #{$xs}{
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+        &-5{
+            border: 2px solid rgba($color: $white, $alpha: .3);
+            background: rgba($color: $white, $alpha: .1);
+            padding: 20px 30px;
+            @include border-radius(6px);
+            &:hover{
+                background: $white;
+                border-color: $white;
+                & .services__content-5{
+                    & i{
+                        color: $black-6;
+                    }
+                }
+                & .services__title-5{
+                    color: $black-6;
+                }
+                & .services__more-5{
+                    & i{
+                        color: $black-6;
+                    }
+                }
+            }
+        }
+
+    }
+    &__inner{
+        position: relative;
+        z-index: 1;
+        &::before{
+            position: absolute;
+            content: "";
+            left: 0;
+            right: 0;
+            top: 10px;
+            border-radius: 20px;
+            background: $w-purple;
+            height: 50%;
+            z-index: -1;
+        }
+        &:hover,
+        &.active{
+            &::before{
+                top: -3px;
+            }
+        }
+        &-2{
+            &::before{
+                background: $w-blue;
+            }
+            &:hover,
+            &.active{
+                &::before{
+                    top: -3px;
+                }
+            }
+        }
+    }
+    &__icon{
+        min-height: 145px;
+        &-2{
+            margin-bottom: 22px;
+        }
+        &-3{
+            min-height: 157px;
+            margin-bottom: 33px;
+        }
+    }
+    &__thumb{
+        &-4{
+            min-height: 160px;
+        }
+    }
+    &__img-5{
+        & img{
+            @include border-radius(10px);
+        }
+    }
+    &__title{
+        font-size: 22px;
+        color: $black-2;
+        & a{
+            &:hover{
+                color: $w-purple;
+            }
+        }
+        &-2{
+            font-size: 22px;
+            color: $black-3;
+            margin-bottom: 13px;
+            & a{
+                &:hover{
+                    color: $w-blue;
+                }
+            }
+        }
+        &-3{
+            color: $black-4;
+            font-size: 22px;
+            margin-bottom: 10px;
+            &:hover{
+                color: $w-purple-4;
+            }
+        }
+        &-4{
+            color: $black-7;
+            font-size: 22px;
+            padding-right: 215px;
+            margin-bottom: 12px;
+            @media #{$xl}{
+                padding-right: 180px;
+            }
+            @media #{$lg}{
+                padding-right: 90px;
+            }
+            @media #{$md}{
+                padding-right: 0px;
+            }
+            @media #{$sm}{
+                padding-right: 0px;
+            }
+            @media #{$xs}{
+                padding-right: 0px;
+            }
+            & a{
+                &:hover{
+                    color: $w-purple-6;
+                }
+            }
+        }
+        &-5{
+            color: $white;
+            font-size: 20px;
+            margin-bottom: 0;
+        }
+        &-6{
+            font-size: 26px;
+            font-weight: 700;
+            color: $black-6;
+            margin-bottom: 15px;
+        }
+    }
+    &__content{
+        & p{
+            font-size: 15px;
+            line-height: 22px;
+            margin-bottom: 0;
+        }
+        &-2{
+            & p{
+                margin-bottom: 0;
+            }
+        }
+        &-3{
+            & p{
+                font-size: 15px;
+                font-weight: 600;
+                color: $w-text-8;
+            }
+        }
+        &-4{
+            padding-top: 32px;
+            & p{
+                font-size: 15px;
+                font-weight: 600;
+                color: $body-text-color;
+                margin-bottom: 20px;
+                padding-right: 50px;
+                @media #{$lg}{
+                    padding-right: 0px;
+                }
+                @media #{$md}{
+                    padding-right: 0px;
+                }
+                @media #{$sm}{
+                    padding-right: 0px;
+                }
+                @media #{$xs}{
+                    padding-right: 0px;
+                }
+            }
+            & .link-btn{
+                &:hover{
+                    color: $w-purple-6;
+                }
+            }
+        }
+        &-5{
+            & i{
+                color: $white;
+                font-size: 18px;
+                margin-right: 17px;
+            }
+        }
+        &-6{
+            @media #{$md}{
+                padding-right: 30px;
+            }
+            @media #{$sm}{
+                padding-right: 0px;
+            }
+            @media #{$xs}{
+                padding-right: 0px;
+            }
+            & p{
+                color: $w-text-17;
+                margin-bottom: 25px;
+            }
+        }
+    }
+    &__shape{
+        & img{
+            position: absolute;
+            z-index: -1;
+            &.services-circle-1{
+                top: 8%;
+                left: 0;
+                opacity: .5;
+                @media #{$xs}{
+                    width: 100%;
+                }
+            }
+            &.services-circle-2{
+                top: 22%;
+                right: 4%;
+                -webkit-animation: services-circle-2  4s linear 0s infinite alternate;
+                -moz-animation: services-circle-2  4s linear 0s infinite alternate; 
+                -o-animation: services-circle-2  4s linear 0s infinite alternate;
+                animation: services-circle-2  4s linear 0s infinite alternate; 
+            }
+            &.services-dot{
+                top: 5%;
+                left: 0%;
+                -webkit-animation: services-dot  4s linear infinite alternate;
+                -moz-animation: services-dot  4s linear infinite alternate; 
+                -o-animation: services-dot  4s linear infinite alternate;
+                animation: services-dot  4s linear infinite alternate; 
+            }
+            &.services-triangle{
+                top: 14%;
+                right: 6%;
+                -webkit-animation: services-triangle  4s linear infinite alternate;
+                -moz-animation: services-triangle  4s linear infinite alternate; 
+                -o-animation: services-triangle  4s linear infinite alternate;
+                animation: services-triangle  4s linear infinite alternate; 
+                @media #{$xl}{
+                    right: 7%;
+                }
+                @media #{$lg}{
+                    right: 8%;
+                }
+                @media #{$md}{
+                    right: 10%;
+                }
+                @media #{$sm}{
+                    right: 11%;
+                }
+                @media #{$xs}{
+                    right: 28%;
+                }
+            }
+        }
+        &-2{
+            & img{
+                position: absolute;
+                &.services-2-circle{
+                    top: 12%;
+                    left: 0;
+                    opacity: .04;
+                }
+                &.services-2-circle-2{
+                    top: 26%;
+                    left: 0;
+                    opacity: .06;
+                }
+            }
+        }
+    }
+    &__more-5{
+        & a{
+            display: inline-block;
+            font-size: 24px;
+            color: $white;
+        }
+    }
+    &__text{
+        & h3{
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+        & p{
+            margin-bottom: 45px;
+            & span{
+                color: $w-purple;
+                position: relative;
+                &::after{
+                    position: absolute;
+                    content: '';
+                    left: 0;
+                    bottom: -2px;
+                    width: 100%;
+                    height: 2px;
+                    background: $w-purple;
+                }
+            }
+        }
+        & h4{
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+    }
+    &__list{
+        & ul{
+            & li{
+                font-size: 16px;
+                position: relative;
+                padding-left: 30px;
+                margin-bottom: 15px;
+                &::after{
+                    position: absolute;
+                    content: '\f058';
+                    left: 0;
+                    top: 0px;
+                    font-family: "Font Awesome 5 Pro";
+                    font-size: 16px;
+                    color: $w-purple;
+                }
+            }
+        }
+    }
+    &__widget{
+        padding: 43px 40px;
+        padding-bottom: 45px;   
+        @media #{$lg}{
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+        @media #{$xs}{
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+        &-title{
+            & h4{
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    &__link{
+        & ul{
+            & li{
+                margin-bottom: 15px;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+                & a{
+                    padding-left: 20px;
+                    position: relative;
+                    &::after{
+                        position: absolute;
+                        content: '\f105';
+                        left: 0;
+                        top: -2px;
+                        font-family: "Font Awesome 5 Pro";
+                        font-size: 16px;
+                        color: $w-purple;
+                    }
+                    &:hover{
+                        color: $w-purple;
+                        &::after{
+                            left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__form{
+        & input{
+            width: 100%;
+            height: 50px;
+            border: 2px solid transparent;
+            background: $white;
+            @include border-radius(10px);
+            padding: 0 20px;
+            margin-bottom: 20px;
+            &::placeholder{
+                color: $grey-19;
+            }
+            &:focus{
+                border-color: $w-purple;
+                outline: none;
+                &::placeholder{
+                    opacity: 0;
+                }
+            }
+        }
+    }
+    &__action{
+        padding: 15px 30px;
+        position: relative;
+        &::after{
+            position: absolute;
+            content: '';
+            top: auto;
+            left: 0;
+            bottom: 0;
+            width: 3px;
+            height: 0;
+            background: $w-purple;
+        }
+        &:hover{
+            &::after{
+                top: 0;
+                bottom: auto;
+                height: 100%;
+            }
+        }
+        & a{
+            margin-bottom: 0;
+            display: block;
+            & i{
+                color: $w-purple;
+                padding-right: 15px;
+            }
+            &:hover{
+                color: $w-purple;
+            }
+        }
+    }
+    &__sidebar{
+        @media #{$xs}{
+            margin-right: 0;
+        }
+    }
+}
+
+
+@keyframes services-triangle {
+    0%{
+        @include transform(rotate(0deg) translateX(-50px));
+    }
+    100%{
+        @include transform(rotate(360deg) translateY(100px));
+    }
+}
+
+@keyframes services-circle-2 {
+    0%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(-100px);
+    }
+}
+
+
+@keyframes services-dot {
+    0%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(100px);
+    }
+}

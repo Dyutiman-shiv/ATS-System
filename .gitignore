@@ -1,0 +1,52 @@
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+eggs/
+*.egg
+
+# Virtual environment
+Lib/
+Include/
+Scripts/
+pyvenv.cfg
+share/
+
+# Django
+db.sqlite3
+*.log
+media/
+staticfiles/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# uwsgi
+*.sock
+*.pid
+
+# Byte-compiled / cached
+*.pyc
+
+# Distribution / packaging
+*.tar.gz
+*.whl
+

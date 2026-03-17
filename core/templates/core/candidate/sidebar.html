@@ -1,0 +1,23 @@
+<!-- Sidebar-->
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <div class="bg-light rounded-lg box-shadow-lg">
+              <div class="px-4 py-4 mb-1 text-center">
+              <a class="btn btn-primary btn-sm" href="#view-resume" data-toggle="modal">
+                  <img class="img-responsive" data-pdf-thumbnail-file="{% if cand.resume %}{{ cand.resume.url }}{% else %}#{% endif %}" src="/static/resumes/{{cand.template.name}}/thumbnail.jpg" width="100">
+              </a>
+
+                <h6 class="mb-0 pt-1">{{hq_user.name}}</h6><span class="text-muted font-size-sm">{{hq_user.email}}</span>
+              </div>
+              <div class="d-lg-none px-4 pb-4 text-center"><a class="btn btn-primary px-5 mb-2" href="#account-menu" data-toggle="collapse"><i class="fe-menu mr-2"></i>Account menu</a></div>
+              <div class="d-lg-block collapse pb-2" id="account-menu">
+                  <a class="d-flex align-items-center nav-link-style px-4 py-3 {% if page == 'dashboard' %}active{% endif %}" href="/candidate/dashboard"><i class="fe-pie-chart font-size-lg opacity-60 mr-2"></i>Dashboard<span class="nav-indicator"></span></a>
+                <h3 class="d-block bg-secondary font-size-sm font-weight-semibold text-muted mb-0 px-4 py-3">Profile</h3>
+                  <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top {% if page == 'about' %}active{% endif %}" href="/candidate/profile"><i class="fe-user font-size-lg opacity-60 mr-2"></i>About</a>
+
+                <h3 class="d-block bg-secondary font-size-sm font-weight-semibold text-muted mb-0 px-4 py-3 ">Account settings</h3>
+                  <a class="d-flex align-items-center nav-link-style px-4 py-3 {% if page == 'prefs' %}active{% endif %}" href="/candidate/preferences"><i class="fe-settings font-size-lg opacity-60 mr-2"></i>Preferences</a>
+
+                  <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top" href="/user/logout"><i class="fe-log-out font-size-lg opacity-60 mr-2"></i>Sign out</a>
+              </div>
+            </div>
+          </div>

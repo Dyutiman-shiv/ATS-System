@@ -1,0 +1,291 @@
+/*----------------------------------------*/
+/*  23. FOOTER CSS START
+/*----------------------------------------*/
+
+.footer{
+    &__widget{
+        &-title{
+            & h3{
+                font-size: 18px;
+                margin-bottom: 0;
+                padding-top: 10px;
+            }
+            &-3{
+                & h3{
+                    color: $white;
+                }
+            }
+        }
+        &-content{
+            p{
+                color: $w-text;
+                font-weight: 600;
+                padding-right: 70px;
+            }
+            &-3{
+                & p{
+                    color: $w-text-9;
+                }
+            }
+        }
+    }
+    &__link{
+        padding-top: 8px;
+        & ul{
+            & li{
+                &:not(:last-child){
+                    margin-bottom: 15px;
+                }
+                & a{
+                    color: $w-text;
+                    font-weight: 600;
+                    position: relative;
+                    &::after{
+                        position: absolute;
+                        content: '';
+                        left: 0;
+                        bottom: -6px;
+                        width: 100%;
+                        height: 2px;
+                        background: $w-purple;
+                        opacity: 0;
+                        visibility: hidden;
+                        @include transition(.2s);
+                    }
+                    &:hover{
+                        color: $w-purple;
+                        &::after{
+                            bottom: -2px;
+                            visibility: visible;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+        &-2{
+            & ul{
+                & li{
+                    & a{
+                        &::after{
+                            background: $w-blue;
+                        }
+                        &:hover{
+                            color: $w-blue;
+                        }
+                    }
+                }
+            }
+        }
+        &-3{
+            & ul{
+                & li{
+                    & a{
+                        color: $w-text-9;
+                        &::after{
+                            background: $white;
+                        }
+                        &:hover{
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+        &-4{
+            & ul{
+                & li{
+                    & a{
+                        color: $w-text-9;
+                        &::after{
+                            background: $w-purple-6;
+                        }
+                        &:hover{
+                            color: $w-purple-6;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__social{
+        padding-top: 14px;
+        & ul{
+            & li{
+                display: inline-block;
+                &:not(:last-child){
+                    margin-right: 10px;
+                }
+                & a{
+                    color: $w-text-6;
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    line-height: 38px;
+                    text-align: center;
+                    border: 1px solid $border;
+                    @include border-radius(50%);
+                    &:hover{
+                        background: $w-purple;
+                        color: $white;
+                        border-color: $w-purple;
+                        @include box-shadow(0px 20px 30px 0px rgba(7, 3, 55, 0.16));
+                    }
+                }
+            }
+        }
+        &-2{
+            & ul{
+                & li{
+                    & a{
+                        &:hover{
+                            background: $w-blue;
+                            border-color: $w-blue;
+                        }
+                    }
+                }
+            }
+        }
+        &-3{
+            & ul{
+                & li{
+                    & a{
+                        color: $w-text-6;
+                        border-color: $w-text-6;
+                        &:hover{
+                            color: $w-purple-4;
+                            background: $white;
+                            border-color: $white;
+                        }
+                    }
+                }
+            }
+        }
+        &-4{
+            & ul{
+                & li{
+                    & a{
+                        color: $w-text-6;
+                        border-color: $w-text-6;
+                        &:hover{
+                            color: $w-purple-6;
+                            background: $white;
+                            border-color: $white;
+                        }
+                    }
+                }
+            }
+        }
+        &-5{
+            & ul{
+                & li{
+                    & a{
+                        color: $w-text-6;
+                        border-color: $w-text-6;
+                        &:hover{
+                            color: $w-blue-7;
+                            background: $white;
+                            border-color: $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__copyright{
+        border-top: 1px solid $border-2;
+        padding: 25px 0;
+        &-2{
+            border-color: rgba($color: $white, $alpha: .1);
+        }
+        &-3{
+            border: none;
+            padding: 35px 0;
+        }
+        &-wrapper{
+            & p{
+                font-size: 14px;
+                font-weight: 600;
+                color: $w-text-5;
+                margin-bottom: 0;
+                & a{
+                    color: $w-purple;
+                }
+            }
+            &-2{
+                & p{
+                    & a{
+                        color: $w-blue;
+                    }
+                }
+            }
+            &-3{
+                & p{
+                    color: $w-text-10;
+                    & a{
+                        color: $white;
+                    }
+                }
+            }
+            &-4{
+                & p{
+                    & a{
+                        color: $w-blue-7;
+                    }
+                }
+            }
+        }
+    }
+    &__shape{
+        & img{
+            position: absolute;
+            opacity: .04;
+            &.footer-circle-1{
+                top: 7%;
+                right: 0;
+            }
+            &.footer-circle-2{
+                top: 18%;
+                right: 0;
+            }
+            &.footer-2-circle-1{
+                top: -19%;
+                right: 0;
+            }
+            &.footer-2-circle-2{
+                top: -7%;
+                right: 0;
+            }
+        }
+    }
+    &__pl-70{
+        padding-left: 70px;
+        @media #{$xl}{
+            padding-left: 35px;
+        }
+        @media #{$lg}{
+            padding-left: 0px;
+        }
+        @media #{$sm}{
+            padding-left: 0px;
+        }
+        @media #{$xs}{
+            padding-left: 0px;
+        }
+    }
+    &__pl-90{
+        padding-left: 90px;
+        @media #{$xl}{
+            padding-left: 20px;
+        }
+        @media #{$lg}{
+            padding-left: 0px;
+        }
+        @media #{$sm}{
+            padding-left: 0px;
+        }
+        @media #{$xs}{
+            padding-left: 0px;
+        }
+    }
+}

@@ -1,0 +1,105 @@
+/*----------------------------------------*/
+/*  14. PLATFORM CSS START
+/*----------------------------------------*/
+
+.platform{
+    &__item{
+        padding: 32px 60px;
+        padding-bottom: 50px;
+        @include box-shadow(0px 20px 40px 0px rgba(10, 0, 48, 0.08));
+        @include border-radius(6px);
+
+        @media #{$xl}{
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        @media #{$lg}{
+            padding-left: 35px;
+            padding-right: 35px;
+        }
+        @media #{$xs}{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        & p{
+            margin-bottom: 33px;
+        }
+    }
+    &__title{
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: $black-4;
+    }
+    &__name{
+        & a{
+            height: 50px;
+            text-align: center;
+            padding: 0 15px;
+            border: 2px solid $w-purple-4;
+            background: $w-purple-4;
+            @include border-radius(6px);
+            display: inline-block;
+            padding-top: 4px;
+            &.app-store{
+                &:hover{
+                    background: $black-4;
+                    border-color: $black-4;
+                }
+            }
+            &.apple-store{
+                background: $black-4;
+                border-color: $black-4;
+                &:hover{
+                    background: $w-purple-4;
+                    border-color: $w-purple-4;
+                }
+            }
+            &.windows{
+                border-color: rgba($color: #000000, $alpha: .2);
+                background: transparent;
+                &:hover{
+                    background: $black-4;
+                    border-color: $black-4;
+                    & i{
+                        color: $white;
+                    }
+                    & h5{
+                        color: $white;
+                    }
+                    & span{
+                        color: $white;
+                    }
+                }
+                & i{
+                    color: $black-4;
+                }
+                & h5{
+                    color: $black-4;
+                }
+                & span{
+                    color: $black-4;
+                }
+            }
+        }
+        &-icon{
+            margin-right: 15px;
+            & i{
+                font-size: 24px;
+                color: $white;
+            }
+        }
+        &-content{
+            & h5{
+                font-size: 12px;
+                font-weight: 600;
+                color: $white;
+                margin-bottom: 0;
+            }
+            & span{
+                font-size: 16px;
+                font-weight: 700;
+                color: $white;
+            }
+        }
+    }
+}

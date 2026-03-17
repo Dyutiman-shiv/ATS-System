@@ -1,0 +1,1 @@
+var arr = ["phone1", "phone2", "phoneMain"]; for (const inputId of arr) { var n = document.getElementById(inputId); n && window.intlTelInput(n, { initialCountry: "auto", strictMode: true,separateDialCode: true, geoIpLookup(n) { fetch("https://ipapi.co/json").then(n => n.json()).then(o => n(o.country_code)).catch(() => n("us")) } }) }

@@ -1,0 +1,327 @@
+/*----------------------------------------*/
+/*  10. TEAM CSS START
+/*----------------------------------------*/
+
+.team{
+    &__slider{
+        position: relative;
+        &::after{
+            position: absolute;
+            content: '';
+            top: 0;
+            left: -34%;
+            width: 380px;
+            height: 460px;
+            background: $grey-3;
+            @media #{$xl}{
+                left: -36%;
+            }
+            @media #{$lg}{
+                opacity: 0;
+            }
+            @media #{$md}{
+               left: -57%;
+            }
+            @media #{$sm}{
+                opacity: 0;
+            }
+            @media #{$xs}{
+                opacity: 0;
+            }
+        }
+        & .owl-stage-outer{
+            overflow: visible;
+            @media #{$md}{
+                overflow: hidden;
+            }
+        }
+        & .owl-dots{
+            @include flexbox();
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            & .owl-dot{
+                margin: 0 5px;
+                width: 10px;
+                height: 10px;
+                background: $grey-4;
+                @include border-radius(50%);
+                &.active{
+                    background: $w-blue;
+                }
+            }
+        }
+    }
+    &__item{
+        &:hover{
+            & .team__thumb{
+                &::after{
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+            & .team__social{
+                & ul{
+                    & li{
+                        & > a{
+                            opacity: 1;
+                            @include transform(translateX(0px));
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__thumb{
+        &::after{
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba($color: $black-3, $alpha: .5);
+            visibility: hidden;
+            opacity: 0;
+            @include border-radius(6px);
+        }
+        & img{
+            height: 350px;
+            @include border-radius(6px);
+            @media #{$lg}{
+                height: auto;
+            }
+            @media #{$sm}{
+                height: auto;
+            }
+            @media #{$xs}{
+                height: auto;
+            }
+        }
+    }
+    &__title{
+        font-size: 22px;
+        color: $black-3;
+        margin-bottom: 0;
+        & a{
+            &:hover{
+                color: $w-blue;
+            }
+        }
+    }
+    &__position{
+        font-size: 14px;
+        font-weight: 600;
+        color: $w-text;
+    }
+    &__social{
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        z-index: 1;
+        & ul{
+            & li{
+                display: inline-block;
+                &:not(:last-child){
+                    margin-right: 30px;
+                }
+                & a{
+                    &:hover{
+                        color: $w-blue;
+                    }
+                    position: relative;
+                    display: inline-block;
+                    font-size: 16px;
+                    color: $white;
+                    @include transform(translateX(-60px));
+                    opacity: 0;
+                }
+            }
+        }
+    }
+    &__shape{
+        & img{
+            position: absolute;
+            z-index: 11;
+            &.team-dot{
+                right: 5%;
+                top: 20%;
+                -webkit-animation: team-dot 4s linear 0s infinite alternate;
+                -moz-animation: team-dot 4s linear 0s infinite alternate; 
+                -o-animation: team-dot 4s linear 0s infinite alternate;
+                animation: team-dot 4s linear 0s infinite alternate; 
+            }
+            &.team-triangle{
+                bottom: 21%;
+                left: 2%;
+                -webkit-animation: team-triangle 5s linear infinite;
+                -moz-animation: team-triangle 5s linear infinite; 
+                -o-animation: team-triangle 5s linear infinite;
+                animation: team-triangle 5s linear infinite; 
+                @media #{$xl}{
+                    left: 1%;
+                }
+                @media #{$lg}{
+                    bottom: 9%;
+                    left: 8%;
+                }
+                @media #{$md}{
+                    bottom: 9%;
+                    left: 8%;
+                }
+                @media #{$sm}{
+                    bottom: 9%;
+                    left: 8%;
+                }
+                @media #{$xs}{
+                    bottom: 9%;
+                    left: 8%;
+                }
+            }
+        }
+    }
+    &__details{
+        &-inner{
+            @include box-shadow(0px 50px 80px 0px rgba(3, 0, 53, 0.1));
+            @include border-radius(30px);
+        }
+        &-shape{
+            right: -11%;
+            bottom: -16%;
+            z-index: -1;
+            @media #{$xl}{
+                right: 0;
+            }
+            @media #{$lg}{
+                right: 0;
+            }
+            @media #{$md}{
+                right: -3%;
+                bottom: -7%;
+            }
+            @media #{$sm}{
+                right: -3%;
+                bottom: -7%;
+            }
+            @media #{$xs}{
+                right: -3%;
+                bottom: -5%;
+            }
+        }
+        &-img{
+            @media #{$lg}{
+                margin-right: 30px;
+            }
+            @media #{$md}{
+                margin-right: 0px;
+            }
+            @media #{$sm}{
+                margin-right: 0px;
+            }
+            @media #{$xs}{
+                margin-right: 0px;
+            }
+           & img{
+                @include border-radius(30px 0 0 30px);
+           }
+        }
+        &-content{
+            @media #{$lg}{
+                padding-top: 40px;
+            }
+            @media #{$md}{
+                padding: 40px;
+            }
+            @media #{$sm}{
+                padding: 40px;
+            }
+            @media #{$xs}{
+                padding: 40px;
+            }
+            & > span{
+                font-size: 20px;
+                display: inline-block;
+                margin-bottom: 7px;
+            }
+            & h3{
+                font-size: 30px;
+                margin-bottom: 15px;
+            }
+            & p{
+                margin-bottom: 35px;
+                padding-right: 80px;
+            }
+        }
+        &-contact{
+            & ul{
+                & li{
+                    margin-bottom: 8px;
+                    display: flex;
+                    & .icon{
+                        & i{
+                            line-height: 27px;
+                            color: $w-purple ;
+                            margin-right: 15px;
+                        }
+                    }
+                    & .text{
+                        & span{
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+        &-social{
+            & ul{
+                & li{
+                    display: inline-block;
+                    margin-right: 7px;
+                    & a{
+                        position: relative;
+                        display: inline-block;
+                        width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        text-align: center;
+                        background: $grey-12;
+                        font-size: 14px;
+                        @include border-radius(10px);
+                        &:hover{
+                            background: $w-purple ;
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+        &-info{
+            & h4{
+                font-size: 40px;
+                font-weight: 700;
+                margin-bottom: 25px;
+            }
+            & p{
+                margin-bottom: 25px;
+            }
+        }
+    }
+}
+
+@keyframes  team-triangle{
+    0%{
+        @include transform(rotate(0deg));
+    }
+    100%{
+        @include transform(rotate(360deg));
+    }
+}
+
+@keyframes team-dot{
+    0%{
+      transform: translateY(-100px);
+    }
+    100%{
+      transform: translateY(0px);
+    }
+}

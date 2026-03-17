@@ -1,0 +1,159 @@
+{% extends 'core/candidate/base_loggedin.html' %}
+{% load static %}
+{% block head_end %}
+<link rel="stylesheet" media="screen" href="/static/vendor/simplebar/dist/simplebar.min.css">
+<link rel="stylesheet" media="screen" href="/static/vendor/chartist/dist/chartist.min.css">
+{% endblock %}
+{% block content %}
+    <style>
+    .radio_item{
+    display: none !important;
+    }
+
+    .label_item {
+    opacity: 0.5;
+    }
+
+    .label_item img {
+        max-height: 250px;
+    }
+
+    .radio_item:checked + label {
+    opacity: 1;
+    border: 3px solid rebeccapurple;
+        border-radius: 5px;
+    }
+
+    label {
+    cursor: pointer;
+    }
+</style>
+     <!-- Page content-->
+      <div class="container bg-overlay-content pb-4 mb-md-3" style="margin-top: -350px;">
+        <div class="row">
+            {% include 'core/candidate/sidebar.html' %}
+          <!-- Content-->
+          <div class="col-lg-8">
+            <div class="d-flex flex-column h-100 bg-light rounded-lg box-shadow-lg p-4">
+              <div class="pt-2 p-md-3">
+              {% for message in messages %}
+                      <div class="alert {% if message.tags == "error" %}alert-danger{% else %}alert-success{% endif %} alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ message| safe }}
+                      </div>
+                    {% endfor %}
+                <!-- Title-->
+                <h1 class="h3 mb-3 pb-2 text-center text-sm-left">{{ cand.hq_user.name }}</h1>
+                <!-- Stats-->
+                <div class="row mx-n2 py-2">
+
+                  <div class="col-md-4 col-sm-6 px-2 mb-3">
+                    <div class="bg-secondary h-100 rounded-lg p-4 text-center">
+                      <h3 class="font-size-sm font-weight-medium text-body">Profile Completeness</h3>
+                      <p class="h2 mb-2">{{ profile_counts.score }}%</p>
+                        <div class="progress" style="height: 10px;">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{ profile_counts.score }}%" aria-valuenow="{{ profile_counts.score }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 px-2 mb-3">
+                    <div class="bg-secondary h-100 rounded-lg p-4 text-center">
+                      <h3 class="font-size-sm font-weight-medium text-body">Your profile came in</h3>
+                      <p class="h2 mb-2">0</p>
+                      <p class="font-size-ms text-muted mb-0">searches last week <i class="fe-info text-primary ml-1" data-toggle="tooltip" title="After your profile is verified, matching jobs will appear here"></i> </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-12 px-2 mb-3">
+                    <div class="bg-secondary h-100 rounded-lg p-4 text-center">
+                      <h3 class="font-size-sm font-weight-medium text-body">Your profile</h3>
+                      <p class="h2 mb-2 text-danger"><i class="fe-x-circle"></i> </p>
+                      <p class="font-size-ms text-muted mb-0">is NOT verified <i class="fe-info text-primary ml-1" data-toggle="tooltip" title="Only verified profiles are matched with jobs in HireQ networks of companies."></i></p>
+                    </div>
+                  </div>
+                </div>
+                 <!---div class="row mx-n2 py-2">
+                  <div class="col-md-4 col-sm-6 px-2 mb-3">
+                      <a class="btn btn-primary d-block" href="/candidate/gen_resume/cdb7cbiy"><i class="fe-repeat mr-2"></i> Refresh</a>
+                  </div>
+                     <div class="col-md-4 col-sm-6 px-2 mb-3">
+                      <a class="btn btn-primary d-block" href="#"><i class="fe-file-text mr-2"></i> Change Template</a>
+                  </div>
+                     <div class="col-md-4 col-sm-6 px-2 mb-3">
+                      <a class="btn btn-primary d-block" href="#"><i class="fe-user mr-2"></i> Public Profile</a>
+                  </div>
+                 </div-->
+                <!-- Charts-->
+                <div class="row mx-n2 pt-2">
+                  <div class="col-lg-7 px-2">
+                  <div class="col-lg-5 px-2">
+                    <div class="card">
+                      <div class="card-body">
+                        <h3 class="font-size-sm pb-3 mb-0 border-bottom">Recent Jobs</h3>
+
+                          {% for jd in jds %}
+                        <div class="d-flex justify-content-between align-items-center font-size-sm py-2 border-bottom">
+                          <div class="media media-ie-fix py-1"><img width="20" src="{% if jd.company.icon %}{{ jd.company.icon.url }}{% else %}/static/img/icons/company.png{% endif %}" alt="USA"/>
+                            <div class="media-body pl-2">{{jd.title}}</div>
+                          </div><a href="/jobs/{{ jd.pub_id }}" onclick="alert('You need to verify your profile for applying to these jobs');return(false)"><i class="fe-external-link"></i> </a>
+                        </div>
+                          {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- Change Template Modal-->
+    <div class="modal fade" id="modal-change-template" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content border-0">
+                    <div class="modal-header border-0 bg-dark px-4">
+                        <h4 class="modal-title text-light">Change Template</h4>
+                        <button class="close text-light" type="button" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body px-4">
+                        <p class="font-size-ms text-muted">Change your resume template</p>
+                        <form class="needs-validation" method="post" action="/candidate/change_template" novalidate>
+                            {% csrf_token %}
+                            <div class="row">
+                                {% for temp in temps %}
+                                <div class="col-md-4 mb-2">
+                                <input type="radio" class="radio_item mr-3" value="{{ temp.pub_id }}" name="temp_id" id="radio_{{ temp.pub_id }}" {% if cand.template == temp %}checked{% endif %}>
+                                    <label class="label_item" for="radio_{{ temp.pub_id }}"> <img src="/media/{{ temp.image }}"> </label>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-secondary btn-block" data-dismiss="modal"><span class="fe-arrow-left-circle mr-3"></span> Cancel</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary btn-block" type="submit"><span class="fe-save mr-3"></span> Save</button>
+                                </div>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                <div class="modal-body text-center px-4 pt-2 pb-4">
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block body_end %}
+    <script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
+    <script src="/static/vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="/static/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% load static %}
+{% load widget_tweaks %}
+            <div class="modal-content border-0">
+                    <div class="modal-header border-0 bg-dark px-4">
+                        <h4 class="modal-title text-light">Edit Achievement</h4>
+                        <button class="close text-light" type="button" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body px-4">
+                        <p class="font-size-ms text-muted">Provide details of your certificate/achievement. If needed, add a short note about score/distinction etc.</p>
+                        <form class="needs-validation" method="post" action="/candidate/edit_certificate" novalidate>
+                            {% csrf_token %}
+                            <input type="hidden" name="pub_id" value="{{ cert.pub_id }}">
+
+                            <div class="row">
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-users"></i></span></div>
+                                    {% render_field cert_frm.title class="form-control prepended-form-control" placeholder="Title"%}
+                                </div>
+
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-link"></i></span></div>
+                                    {% render_field cert_frm.issuer_name class="form-control prepended-form-control" placeholder="Issuer Name"%}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col input-group-overlay form-group">
+                                    {% render_field cert_frm.month class="form-control custom-select" placeholder="Month" %}
+                                </div>
+
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-calendar"></i></span></div>
+                                    {% render_field cert_frm.year class="form-control prepended-form-control" placeholder="Year" %}
+
+
+                                </div>
+                            </div>
+
+                            <div class="input-group-overlay form-group">
+
+                                <textarea class="form-control" name="summary" id="editor1" placeholder="Write a brief summary" required>{% if cert.summary %}{{ cert.summary }}{% endif %}</textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-secondary btn-block" data-dismiss="modal"><span class="fe-arrow-left-circle mr-3"></span> Cancel</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary btn-block" type="submit"><span class="fe-save mr-3"></span> Save</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                <div class="modal-body text-center px-4 pt-2 pb-4">
+                    <hr>
+                </div>
+            </div>

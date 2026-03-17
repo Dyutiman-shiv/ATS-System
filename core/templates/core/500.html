@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block navbar %}
+    {% include 'core/navbar_fixed.html' %}
+{% endblock %}
+{% block content %}
+    <!-- Content-->
+    <!-- Page content-->
+      <div class="container d-flex flex-column justify-content-center pt-5 mt-n6" style="flex: 1 0 auto;">
+        <div class="pt-7 pb-5">
+          <div class="text-center mb-2 pb-4">
+            <h1 class="mb-grid-gutter"><img class="d-inline-block" src="/static/img/pages/500.svg" alt="Error 500" style="max-width: 600px;"/><span class="sr-only">Error 500</span>
+                <span class="d-block pt-3 font-size-sm font-weight-semibold text-danger">Error code: 500</span>
+            </h1>
+            <h2>Oops! something went terribly wrong.</h2>
+            <p class="pb-2">Rest assured that our developers have been notified and this will be fixed soon.</p><a class="btn btn-translucent-primary mr-3" href="/">Go to homepage</a><span>Or <a href="/about/contact">Contact Us</a></span>
+          </div>
+
+      </div>
+{% endblock %}

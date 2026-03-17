@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+     <title>CV-Resume</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <style>
+
+  .row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+      body{
+        height:900px;
+        width:1000px;
+        margin-left: auto;
+        margin-right: auto;
+        font-family:ubuntu,sans-serif;
+      }
+      /* h2,h3,h4,h5,h6,p{
+        font-family:ubuntu;
+      } */
+      ul {list-style: none}
+      li::before {content: "•"; color: #449399;
+  display: inline-block; width: 1em;
+  margin-left: -1em}
+  .div1 {
+    position: absolute;
+    margin-left:-80px;
+  width: 50px;
+  height: 80px;
+  border: 1px solid #516076;
+  background-color: #516076;
+}
+/* .div2 {
+margin-top:30px;
+width: 50px;
+height: 80px;
+border: 1px solid #449399;
+background-color: #449399;
+} */
+.div3 {
+  position: absolute;
+  margin-left:-80px;
+/* margin-top:40px; */
+width: 50px;
+height: 80px;
+border: 1px solid #449399;
+background-color: #449399;
+}
+/* .div4 {
+margin-top:270px;
+width: 50px;
+height: 80px;
+border: 1px solid #449399;
+background-color: #449399;
+}
+.div5 {
+margin-top:180px;
+width: 50px;
+height: 80px;
+border: 1px solid #449399;
+background-color: #449399;
+} */
+.email{
+  margin-right: -120px;
+}
+/* .div6 {
+margin-top:220px;
+width: 50px;
+height: 80px;
+border: 1px solid #449399;
+background-color: #449399;
+}
+.div7 {
+margin-top:30px;
+width: 50px;
+height: 80px;
+border: 1px solid #449399;
+background-color: #449399;
+} */
+.a{
+  text-align: right;
+    margin-bottom: 5px;
+}
+      </style>
+   </head>
+   <body>
+     <div class="container">
+       <div>
+         <div class="row">
+           <div class="col-sm-1" style="margin-top:20px;">
+             <!-- <p class="div1"></p> -->
+           </div>
+           <div class="col-sm-5" style="margin-top:20px;">
+             <h2 class="div1"></h2>
+             <h2 style="color: #313c4e;">{{cand.hq_user.name}}</h2>
+             <h4 style="color: #449399;">Senior Accountant</h4>
+           </div>
+          <!-- <div class="col-sm-1" style="margin-top:20px;">
+
+          </div> -->
+           <div class="col-sm-6" style="margin-top:20px;">
+            <p class="a" style="font-size:19px;">{{cand.hq_user.mobile}} <i class="fa fa-mobile" aria-hidden="true"></i></p>
+            <p class="a" style="font-size:19px;">{{cand.hq_user.email}} <i class="fa fa-envelope" aria-hidden="true"></i></p>
+            <p class="a" style="font-size:19px;">{{cand.location}} <i class="fa fa-map-marker" aria-hidden="true"></i></p>
+            <p class="a" style="font-size:19px;">linkedin.com/in/aakansha-agarwal-6541b8100 <i class="fa fa-linkedin" aria-hidden="true"></i></p>
+           </div>
+         </div>
+       </div>
+       <hr style="background-color:#516076;height:3px;">
+       <div class="row">
+         <div class="col-sm-1">
+           <!-- <p class="div2"></p>
+           <p class="div3"></p>
+           <p class="div4"></p>
+           <p class="div5"></p>
+           <p class="div6"></p>
+           <p class="div7"></p> -->
+         </div>
+         <div class="col-sm-5">
+           <h4><b>WORK EXPERIENCE</b></h4>
+           <h4 class="div3"></h4>
+           <h4>Lead – Sales Enablement and GEP</h4>
+           <h5>Accenture</h5>
+           <h6 style="color: #449399;">Jan. 15, 2020-present<span style="float:right;">Gurgaon</span></h6>
+           <h6 style="color: #449399;">Achievements/Tasks</h6>
+           <ul>
+             <li>Managing various sales enablement projects and coordinating sales enablement activities. This includes planning, status tracking, reporting and communicating to key stakeholders.</li>
+             <li>communicating to key stakeholders. Working with cross functional teams to ensure progress, issue resolution and process improvement.</li>
+             <li>Leading a new product in association with Cambridge University, UK India.</li>
+           </ul>
+           <br>
+           <h4 class="div3"></h4>
+           <h4>Education Development Manager</h4>
+           <h5>Hiresure.ai</h5>
+           <h6 style="color: #449399;">Jan. 15, 2019-Jan 10,2020<span style="float:right;">Gurgaon</span></h6>
+           <h6 style="color: #449399;">Achievements/Tasks</h6>
+           <ul>
+             <li>As an individual contributor, tackled newly created, undeveloped sales territories lacking in basic contact data and sales operation.</li>
+             <li>Significantly contributed in recovering 81% of payments across all partners within six months of timeline.</li>
+           </ul>
+           <br>
+           <h4 class="div3"></h4>
+           <h4>Senior Accountant</h4>
+           <h5>SmartFinance Co.</h5>
+           <h6 style="color: #449399;">July 2017–January 2017<span style="float:right;">Gurgaon</span></h6>
+           <h6 style="color: #449399;">Achievements/Tasks</h6>
+           <ul>
+             <li>Coordinated the full month end procedure, including preparation of balance sheets, income statements, and trial balance statements.</li>
+             <li>Performed SOX audit for compliance with legal regulations.</li>
+             <li>Ensured accuracy of revenue and expense accounts.</li>
+             <li>Managed and supported two junior accountants and provided them with accounting advice.</li>
+           </ul>
+           <!-- <h4>Travel Consultant</h4>
+           <h5>Travel Triangle</h5>
+           <h6 style="color: #449399;">03/2017-04/2018<span style="float:right;">Gurgaon</span></h6>
+           <h6 style="color: #449399;">Achievements/Tasks</h6>
+           <ul>
+             <li>Maximum Call Utilization Time: Recorded a maximum intra- day talk-time of 6 hours, with an average of 4 hours per day</li>
+             <li>Maintained the performance in the case of major outbreak situations in the particular destination</li>
+             <li>Coordinated well with the clients giving them assurance</li>
+           </ul> -->
+         </div>
+         <div class="col-sm-1">
+
+         </div>
+         <div class="col-sm-5">
+           <h4><b>PERSONAL PROFILE</b></h4>
+           <p>{{ cand.summary }}</p>
+           <br>
+           <h4><b>SKILLS</b></h4>
+         <p>
+             {% for skill in skills %}
+           <span style="background-color:#516076;padding:5px;border-radius:5px;color:#ffffff;" class="mb-3">{{ skill.name }}</span>
+             {% endfor %}
+          </p>
+           <!-- <h4><b>PERSONAL PPROJECTS</b></h4>
+           <h5>AH Funnel Dashboard(03/2019 - Present)</h5>
+           <ul>
+             <li>Maintaining check on agent's reach on given leads</li>
+             <li>Categorisation of leads on quality basis</li>
+             <li>Maitaining day-to-day lead flow for the agents</li>
+             <li>Boosting conversions using multiple filters to attain MoM growth rate</li>
+           </ul>
+           <h5>Online Reputation Management (08/2018 - 03/2020)</h5>
+           <ul>
+             <li>Keeping the stakes of company high by increase in NPS+</li>
+             <li>Solving the end customer service issues by direct customer interaction</li>
+             <li>Provision of hefty benefits in lieu of dissatisfaction Specific</li>
+             <li>O2O business held with maximised unpaid rating</li>
+           </ul>
+           <h5>TH Funnel Dashboard (01/2018)</h5>
+           <ul>
+             <li>Understanding reduction in OPS utilisation</li>
+             <li>Maintaining OPS effort</li>
+             <li>Maximisation of funnel usage to increase lead reach</li>
+             <li>Keeping traveller retention smooth by checking optimum lead flow</li>
+           </ul>
+           <h5>Call Utilisation (10/2017)</h5>
+           <ul>
+             <li>Maintained highest call utilisation with breakthrough call quality</li>
+             <li>Recipient for awards for the same</li>
+             <li>Maintainance of funnels accordingly and month on month target completion</li>
+             <li>Achievement of targets month on month</li>
+           </ul>
+           <h5>Brand Kanpur</h5>
+           <ul>
+             <li>Conceptualized the growth of tourism in Kanpur</li>
+             <li>Maintenance of documents on the reports of current strata</li>
+             <li>Visiting various government offices and allying them with the project</li>
+           </ul> --><br>
+           <h4><b>EDUCATION</b></h4>
+           <h4>Master's in Business Administration</h4>
+           <h5>Chhatrapati Sahuji Maharaj University</h5>
+           <h6 style="color: #449399;">2015-2017</h6>
+           <h4>Bachelor's in Commerce</h4>
+           <h5>Chhatrapati Sahuji Maharaj University</h5>
+           <h6 style="color: #449399;">2012-2015</h6>
+           <br>
+           <h4><b>ACHIEVEMENTS</b></h4>
+           <ul>
+             <li>Best Performing Team Award by BPCL</li>
+             <li>Best Performing ZBM – Sales by ClassKlap</li>
+             <li>Best Performers by Xseed Education Pvt Ltd</li>
+           </ul>
+         </div>
+
+       </div>
+
+     </div>
+   </body>
+ </html>

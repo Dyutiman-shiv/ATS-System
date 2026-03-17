@@ -1,0 +1,212 @@
+{% extends 'core/candidate/base_loggedin.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+     <!-- Page content-->
+      <div class="container bg-overlay-content pb-4 mb-md-3" style="margin-top: -350px;">
+        <div class="row">
+            {% include 'core/candidate/sidebar.html' %}
+          <!-- Content-->
+          <div class="col-lg-8">
+            <div class="d-flex flex-column h-100 bg-light rounded-lg box-shadow-lg p-4">
+              <div class="py-2 p-md-3">
+                <!-- Title + Delete link-->
+
+                  <div class="d-sm-flex align-items-center justify-content-between pb-2">
+                            <h1 class="h3 mb-3 text-center text-sm-left" id="skills_header">Skills<span class="d-inline-block align-middle bg-faded-dark font-size-ms font-weight-medium rounded-sm py-1 px-2 ml-2">{{ profile_counts.skills }}</span>
+                            </h1>
+                            <div class="d-flex align-items-center mb-3">
+                                <a class="btn btn-primary btn-sm" href="#modal-add-skill" data-toggle="modal"><i class="fe-plus mr-2" data-toggle="tooltip" title="Add skill"></i> Add</a>
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+                          <ul class="list-group sortable o-sortable list-group-flush js-sortable list-reset list">
+                              {% for skill in skills %}
+                            <li class="list-group-item"><i class="fe-move mr-2"></i> {{ skill.name }}
+                                <span class="float-right">
+                                    <a href="/candidate/delete_skill/{{ skill.pub_id }}"><i class="fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="Delete"></i></a>
+                                    <a href="#modal-edit-skill" data-toggle="modal" data-skillid="{{ skill.pub_id }}"><i class="fe-edit text-warning" data-toggle="tooltip" title="Edit"></i></a>
+                                </span>
+                            <div class="progress mt-2" style="height: 8px;">
+                              <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{ skill.percentage }}%" aria-valuenow="{{ skill.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            </li>
+                              {% endfor %}
+                          </ul>
+                        </div>
+              <div class="mt-2"> <small class="mt-6"> Mention your primary skills here. Your most important skills should be at the top. Around 4-6 skills are ideal. More than 10 skills may indicate a lack of focus.</small>
+                  </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- Add Skill Modal-->
+    <div class="modal fade" id="modal-add-skill" tabindex="-1">
+
+        <style>
+            #full-stars-example-two {
+          /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
+          /* make hover effect work properly in IE */
+          /* hide radio inputs */
+          /* hide 'none' input from screenreaders */
+          /* set icon padding and size */
+          /* set default star color */
+          /* if any input is checked, make its following siblings grey */
+          /* make all stars orange on rating group hover */
+          /* make hovered input's following siblings grey on hover */
+        }
+        #full-stars-example-two .rating-group {
+          display: inline-flex;
+        }
+        #full-stars-example-two .rating__icon {
+          pointer-events: none;
+        }
+        #full-stars-example-two .rating__input {
+          position: absolute !important;
+          left: -9999px !important;
+        }
+        #full-stars-example-two .rating__input--none {
+          display: none;
+        }
+        #full-stars-example-two .rating__label {
+          cursor: pointer;
+          padding: 0 0.1em;
+          font-size: 2rem;
+        }
+        #full-stars-example-two .rating__icon--star {
+          color: slateblue;
+        }
+        #full-stars-example-two .rating__input:checked ~ .rating__label .rating__icon--star {
+          color: #ddd;
+        }
+        #full-stars-example-two .rating-group:hover .rating__label .rating__icon--star {
+          color: slateblue;
+        }
+        #full-stars-example-two .rating__input:hover ~ .rating__label .rating__icon--star {
+          color: #ddd;
+        }
+
+        </style>
+
+
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content border-0">
+                    <div class="modal-header border-0 bg-dark px-4">
+                        <h4 class="modal-title text-light">Add Skill</h4>
+                        <button class="close text-light" type="button" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body px-4">
+                        <p class="font-size-ms text-muted">Add your primary skills and their ratings in a scale of 1 to 5.</p>
+                        <form class="needs-validation" method="post" action="/candidate/add_skill" novalidate>
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-check-square"></i></span>
+                                    </div>
+                                    <input name="skill_name" class="form-control prepended-form-control" placeholder="Skill Name">
+                                </div>
+
+                                <div id="full-stars-example-two" class="col form-group text-center mt-n2">
+                                    <div class="rating-group">
+                                        <!--input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio"-->
+                                        <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="skill_rating5" id="rating3-1" value="1" type="radio">
+                                        <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="skill_rating5" id="rating3-2" value="2" type="radio">
+                                        <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="skill_rating5" id="rating3-3" value="3" type="radio" checked>
+                                        <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="skill_rating5" id="rating3-4" value="4" type="radio">
+                                        <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="skill_rating5" id="rating3-5" value="5" type="radio">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-secondary btn-block" data-dismiss="modal"><span class="fe-arrow-left-circle mr-3"></span> Cancel</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary btn-block" type="submit"><span class="fe-plus-circle mr-3"></span> Add</button>
+                                </div>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                <div class="modal-body text-center px-4 pt-2 pb-4">
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Skill Modal-->
+    <div class="modal fade" id="modal-edit-skill" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document" id="edit_skill_content">
+        </div>
+    </div>
+{% endblock %}
+{% block body_end %}
+    <script src="https://lukasoppermann.github.io/html5sortable/html5sortable.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <script>
+
+    </script>
+    <script>
+     // Show the name of the file for custom file input
+    $("#id_profile_image").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $("#id_filename").html(fileName);
+    });
+    $('#modal-edit-skill').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget); // Button that triggered the modal
+          var skill_id = button.data('skillid');
+          var url = '/candidate/edit_skill_ajax/' + skill_id;
+          $("#edit_skill_content").load(url, function () {
+              ClassicEditor.create(document.querySelector('#editor1'))
+          });
+        });
+    // Enable Sortable
+    sortable('.o-sortable', {
+        forcePlaceholderSize: true,
+        placeholderClass: 'ph-class',
+        hoverClass: 'bg-maroon yellow'
+    });
+    sortable('.o-sortable')[0].addEventListener('sortupdate', function(e) {
+
+    console.log(e.detail);
+    //alert(e.detail.origin.index);
+    //alert(e.detail.destination.index);
+    $.get('/candidate/replace_skills_order/'+e.detail.origin.index+'/'+e.detail.destination.index);
+
+    /*
+    This event is triggered when the user stopped sorting and the DOM position has changed.
+
+    e.detail.item - {HTMLElement} dragged element
+
+    Origin Container Data
+    e.detail.origin.index - {Integer} Index of the element within Sortable Items Only
+    e.detail.origin.elementIndex - {Integer} Index of the element in all elements in the Sortable Container
+    e.detail.origin.container - {HTMLElement} Sortable Container that element was moved out of (or copied from)
+    e.detail.origin.itemsBeforeUpdate - {Array} Sortable Items before the move
+    e.detail.origin.items - {Array} Sortable Items after the move
+
+    Destination Container Data
+    e.detail.destination.index - {Integer} Index of the element within Sortable Items Only
+    e.detail.destination.elementIndex - {Integer} Index of the element in all elements in the Sortable Container
+    e.detail.destination.container - {HTMLElement} Sortable Container that element is moved into (or copied into)
+    e.detail.destination.itemsBeforeUpdate - {Array} Sortable Items before the move
+    e.detail.destination.items - {Array} Sortable Items after the move
+    */
+});
+</script>
+{% endblock %}

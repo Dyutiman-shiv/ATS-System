@@ -1,0 +1,126 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block navbar %}
+    {% include 'core/navbar_dark.html' %}
+{% endblock %}
+{% block content %}
+    <!-- Background shape-->
+      <section class="position-relative bg-gradient" style="height: 590px;">
+        <div class="cs-shape cs-shape-bottom cs-shape-curve-side bg-body">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 250">
+            <g>
+              <path fill="currentColor" d="M3000,0v250H0v-51c572.7,34.3,1125.3,34.3,1657.8,0C2190.3,164.8,2637.7,98.4,3000,0z"></path>
+            </g>
+          </svg>
+        </div>
+      </section>
+      <!-- Contact details + Form-->
+      <section class="container bg-overlay-content pt-7" style="margin-top: -590px;">
+        <div class="row pt-md-4 pt-lg-5 mt-3">
+          <div class="col-lg-4 col-md-5 offset-lg-1">
+            <h1 class="text-light mb-3 pb-4 pt-sm-3">Contacts</h1>
+            <div class="d-flex mb-4"><i class="fe-map-pin h3 mb-2 text-light mt-1"></i>
+              <div class="pl-3">
+                <p class="text-light mb-2">{{core_settings.HQ_ADDRESS1}},<br>{{ core_settings.HQ_ADDRESS2 }}</p><a class="cs-fancy-link text-light font-size-sm" href="#map" data-scroll>See on the map</a>
+              </div>
+            </div>
+            <div class="d-flex mb-4"><i class="fe-mail h3 mb-2 text-light"></i>
+              <div class="pl-3"><a class="d-inline-block text-light text-decoration-none mb-2" href="mailto:support@hireq.ai">support@hireq.ai</a></div>
+            </div>
+            <div class="d-flex mb-4"><i class="fe-phone h3 mb-2 text-light"></i>
+              <div class="pl-3"><a class="d-inline-block text-light text-decoration-none mb-2" href="tel:+919535427511">+91 95354 27511</a></div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-md-7">
+            <div class="card border-0 box-shadow-lg">
+              <div class="card-body py-5 px-3 px-sm-4">
+                <h2 class="h3 text-center">Drop us a line</h2>
+                <p class="font-size-sm text-muted text-center">We normally respond within 2 business days</p>
+                  {% for message in messages %}
+                      <div class="alert {% if message.tags == "error" %}alert-danger{% else %}alert-success{% endif %} alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ message| safe }}
+                      </div>
+                    {% endfor %}
+            <!--end of messages-->
+                <form class="needs-validation pt-2 px-md-3" method="post" novalidate>
+                    {% csrf_token %}
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <label class="form-label" for="cont-fn">Full name<sup class="text-danger ml-1">*</sup></label>
+                        {% render_field form.name class="form-control" placeholder="John Doe" %}
+                      <div class="invalid-feedback">Please enter your full name!</div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="form-label" for="cont-email">Company<sup class="text-danger ml-1">*</sup></label>
+                        <div class="custom-control custom-switch">
+                            {% render_field form.is_company class="custom-control-input" %}
+                          <label class="custom-control-label" for="id_is_company">Is a company</label>
+                        </div>
+
+                    </div>
+                  </div>
+                    <div class="row">
+                    <div class="col-md-6 form-group">
+                      <label class="form-label" for="cont-fn">Mobile<sup class="text-danger ml-1">*</sup></label>
+                        {% render_field form.mobile class="form-control" placeholder="9876543210" %}
+                      <div class="invalid-feedback">Please enter your full name!</div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <label class="form-label" for="cont-email">Email address<sup class="text-danger ml-1">*</sup></label>
+                        {% render_field form.email class="form-control" placeholder="j.doe@example.com" %}
+                      <div class="invalid-feedback">Please enter a valid email address!</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="cont-subject">Subject<sup class="text-danger ml-1">*</sup></label>
+                      {% render_field form.subject class="form-control" placeholder="The subject of your message" %}
+                    <div class="invalid-feedback">Please enter a subject!</div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="cont-message">Message<sup class="text-danger ml-1">*</sup></label>
+                      {% render_field form.message class="form-control" %}
+                    <div class="invalid-feedback">Please write a message!</div>
+                  </div>
+                  <div class="text-center pt-2">
+                    <button class="btn btn-primary" type="submit">Send Message</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Map + Directions-->
+      <section class="container py-5 py-md-6 py-lg-7">
+        <div class="row py-sm-3">
+          <div class="col-md-7">
+            <div class="cs-gallery" id="map"><a class="cs-gallery-item cs-map-popup bg-position-center bg-no-repeat py-7 text-center border rounded-lg" href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15555.482619164231!2d77.6320904!3d12.9160338!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x359c3b988ce2ccc7!2sHireSure.ai!5e0!3m2!1sen!2sin!4v1608713244382!5m2!1sen!2sin" data-iframe="true" data-sub-html="&lt;h6 class=&quot;font-size-sm text-light&quot;&gt;{{ core_settings.HQ_ADDRESS1 }}&lt;/h6&gt;" style="background-image: url(/static/img/pages/contacts/map03.jpg);"><span class="cs-gallery-caption"><i class="fe-maximize-2 font-size-xl mt-n1 mr-2"></i>Expand the map</span>
+                <div class="d-inline-block py-4 py-sm-7"><img width="48" src="/static/img/pages/contacts/marker.png" alt="Map marker"/>
+                </div></a></div>
+          </div>
+          <div class="col-md-4 offset-md-1 pt-4">
+            <h2 class="h4 pb-3">How to get there</h2>
+             <h3 class="h5">Landmarks</h3>
+            <ul class="list-unstyled font-size-sm mb-4 pb-2">
+              <li>1.1 km from Central Silk Board</li>
+                <li>700 m from HSR BDA Complex</li>
+            </ul>
+            <h3 class="h5">Busses</h3>
+            <ul class="list-unstyled font-size-sm mb-4 pb-2">
+              <li>From Airport: KIA8, KIA8C and KIA8E</li>
+              <li>On Outer Ring Road: 500CA, 500D and 500F</li>
+            </ul>
+            <h2 class="h4 pb-2">Working hours</h2>
+            <ul class="list-unstyled font-size-sm">
+              <li><span class="text-heading font-size-base mr-1">Mon - Fri:</span>9AM - 7PM</li>
+              <li><span class="text-heading font-size-base mr-1">Sat:</span>10AM - 5PM</li>
+              <li><span class="text-heading font-size-base mr-1">Sun:</span><span class="text-danger">Closed</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+{% endblock %}

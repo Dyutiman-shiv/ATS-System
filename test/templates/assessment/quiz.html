@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <title>{{ meta.title }}</title>
+</head>
+<body>
+<div class="container">
+	<hr/>
+<div class="row">
+<div class="col-sm-8">
+<div class="row">
+    <div class="col-8">
+        <h5 class="my-0">{{ qdict.user_quiz.quiz.display_name }}</h5>
+        <small>Question {{ qdict.seq }} of {{ qdict.user_quiz.num_questions }}</small>
+    </div>
+    <div class="col-4" style="align:right"><div class="float-right"> <h4 class="my-0"><i class="fa fa-clock-o"></i> <span id="expiry_hour">00</span>:<span id="expiry_minute">00</span></h4><small>Time Remaining</small></div></div>
+</div>
+		<div class="card">
+		  <div class="card-header">
+              <div class="row">
+		    <div class="col-10">{{ qdict.question.html | safe }}</div>
+              <div class="col-2">
+              {% if qdict.current_response.is_flagged %}
+                  <a id="flag" href="#"><i class="fa fa-flag" style="color: red"></i></a>
+                  {% else %}
+                  <a id="flag" href="#"><i class="fa fa-flag" style="color: gray"></i></a>
+
+              {% endif %}
+
+                  <!--div class="form-check">
+              <input {% if qdict.current_response.is_flagged %}checked{% endif %} class="form-check-input" type="checkbox" id="flagCheck" name="flagCheck">
+              <label class="form-check-label" for="gridCheck">
+                <i class="fa fa-flag" style="color: red"></i>
+              </label>
+            </div-->
+              </div>
+              </div>
+		  </div>
+		  <div class="card-body">
+            {% for opt in qdict.options %}
+			  <div class="custom-control custom-radio">
+
+              {% if qdict.current_response.selected_index == opt.sequence %}
+                  <input checked type="radio" id="opt-{{ opt.sequence }}" value="{{ opt.sequence }}", name="option" class="custom-control-input">
+              {% else %}
+                <input type="radio" id="opt-{{ opt.sequence }}" value="{{ opt.sequence }}", name="option" class="custom-control-input">
+              {% endif %}
+
+			  	<label class="custom-control-label" for="opt-{{ opt.sequence }}">
+			  	  {{ opt.html | safe }}
+			  </label>
+		  	  </div>
+              {% endfor %}
+          <script>
+              $("input[name=option]:radio").change(function () {
+                  var opt = $(this).val();
+                  url = '/assessment/put_response/{{ qdict.user_quiz.id_pub }}/{{ qdict.seq }}?' + 'option=' + opt;
+                  $.get(url).fail(function (jqXHR) {
+                      alert("Time Over! Please submit the questions.");
+                  });
+                 //alert(opt);
+              });
+              $("#flag").click(function () {
+                  url = '/assessment/flag_question/{{ qdict.user_quiz.id_pub }}/{{ qdict.seq }}' ;
+                  $.get(url);
+                  location.reload();
+              });
+              var dt = new Date("{{ qdict.expiry_dt }}");
+              function UpdateTime() {
+                  var now = new Date().getTime();
+                  var distance = dt - now;
+                  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                  //alert(minutes);
+                  minu = ("0"+minutes).slice(-2);
+                  hr = ("0"+hours).slice(-2);
+                  if (distance < 0) {
+                      minu = "00";
+                      hr = "00";
+                  }
+                  $("#expiry_hour").text(hr);
+                  $("#expiry_minute").text(minu);
+              }
+              UpdateTime();
+              setInterval(function () {
+                  UpdateTime();
+                //alert($("#expiry_minute").text());
+              },10000);
+              function confirmSubmit() {
+                  var resp = confirm("This will close the test and submit your responses. Press OK if you want to submit now.");
+                  if (resp == true) {
+                      window.location.href = "/assessment/submit/{{ qdict.user_quiz.id_pub }}";
+                  }
+
+              }
+          </script>
+	 <div class="card-footer">
+         <div class="text-center">
+        {% if qdict.previous > 0 %}
+	     <a href="{{ qdict.previous }}" class="btn btn-secondary pull-left"><i class="fa fa-arrow-circle-left mr-2"></i>Previous</a>
+        {% endif %}
+			   <button onclick="return confirmSubmit();" class="btn btn-danger"><i class="fa fa-upload mr-2"></i> Submit</button>
+        {% if qdict.next > 0 %}
+		 <a href="{{ qdict.next }}" class="btn btn-primary pull-right">Next<i class="fa fa-arrow-circle-right ml-2"></i></a>
+         {% endif %}
+    </div>
+	 </div>
+
+    </div>
+
+</div>
+</div>
+<div class="col-sm-4">
+<div class="card">
+  <div class="card-header">
+    Questions
+  </div>
+  <div class="card-body">
+      {%  for resp in qdict.responses %}
+    <a href="{{ resp.sequence }}" class="btn {% if resp.is_flagged %}btn btn-outline-danger{% elif resp.submitted_at %}btn-info{% else %}btn-outline-info{% endif %} mb-1" style="border-radius:8px;">{{ resp.sequence }}</a>
+      {% endfor %}
+  </div>
+</div>
+</div>
+</div>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+</body>
+</html>

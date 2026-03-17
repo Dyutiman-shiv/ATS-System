@@ -1,0 +1,237 @@
+/*----------------------------------------*/
+/*  09. CTA CSS START
+/*----------------------------------------*/
+
+.cta{
+    &__inner{
+        background-image: -moz-linear-gradient( 45deg, rgb(111,30,243) 0%, rgb(13,112,214) 100%);
+        background-image: -webkit-linear-gradient( 45deg, rgb(111,30,243) 0%, rgb(13,112,214) 100%);
+        background-image: -ms-linear-gradient( 45deg, rgb(111,30,243) 0%, rgb(13,112,214) 100%);
+        background-image: linear-gradient( 45deg, rgb(111,30,243) 0%, rgb(13,112,214) 100%);
+        @include box-shadow(0px 30px 70px 0px rgba(15, 0, 40, 0.2));
+        @include border-radius(20px);
+        padding: 95px 70px;
+        padding-bottom: 105px;
+        @media #{$md}{
+            padding: 45px 55px;
+            padding-bottom: 40px;
+        }
+        @media #{$sm}{
+            padding: 45px 55px;
+            padding-bottom: 40px;
+        }
+        @media #{$xs}{
+            padding: 35px 30px;
+        }
+        &-2{
+            padding: 117px 80px;
+            padding-bottom: 127px;
+            @include border-radius(20px);
+            z-index: 1;
+            @media #{$md}{
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+            @media #{$sm}{
+                padding: 40px 30px;
+            }
+            @media #{$xs}{
+                padding: 40px 30px;
+            }
+        }
+        &-3{
+            padding: 87px 60px;
+            @include border-radius(10px);
+            @include background();
+            @include box-shadow(0px 40px 70px 0px rgba(10, 0, 48, 0.2));
+            
+            @media #{$xs}{
+                padding: 45px 25px;
+            }
+        }
+    }
+    &__wrapper{}
+    &__title{
+        color: $white;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 0;
+        @media #{$md}{
+            margin-bottom: 20px;
+        }
+        @media #{$sm}{
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        @media #{$xs}{
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        @media #{$md}{
+            font-size: 30px;
+        }
+        &-2{
+            @media #{$xs}{
+                font-size: 24px;
+            }
+        }
+        &-3{
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+    }
+    &__shape{
+        & img{
+            position: absolute;
+            &.circle{
+                right: 9%;
+                bottom: -77%;
+                opacity: .1;
+            }
+            &.circle-2{
+                left: -2%;
+                bottom: 10%;
+                opacity: .4;
+            }
+            &.circle-3{
+                top: -18%;
+                left: 6%;
+                opacity: .08;
+            }
+            &.triangle-1{
+                top: 9%;
+                left: 10%;
+                opacity: .1;
+            }
+            &.triangle-2{
+                top: -9%;
+                right: 10%;
+                opacity: .1;
+            }
+        }
+        &-2{
+            & img{
+                position: absolute;
+                z-index: -1;
+                &.cta-2-shape{
+                    left: -105px;
+                    bottom: -80px;
+                }
+                &.cta-2-circle{
+                    left: 50px;
+                    top: 50px;
+                    opacity: .3;
+                }
+                &.cta-2-circle-2{
+                    right: 0;
+                    bottom: 31%;
+                    opacity: .04;
+                }
+                &.cta-2-circle-3{
+                    right: 0;
+                    bottom: 44%;
+                    opacity: .06;
+                }
+                &.cta-2-dot{
+                    left: 3%;
+                    bottom: 12%;
+                }
+            }
+        }
+    }
+    &__content{
+        &-3{
+            @media #{$sm}{
+                margin-bottom: 25px;
+            }
+            @media #{$xs}{
+                margin-bottom: 25px;
+            }
+            & p{
+                color: $white;
+                opacity: .7;
+                margin-bottom: 0;
+            }
+        }
+    }
+    &__form{
+        & input{
+            width: 370px;
+            height: 60px;
+            padding: 0 30px;
+            border: none;
+            outline: none;
+            background: $white;
+            @include border-radius(30px);
+            margin-right: 20px;
+            @media #{$sm}{
+				margin-bottom: 20px;
+			}
+            @media #{$xs}{
+				margin-bottom: 20px;
+                width: 100%;
+			}
+            &::placeholder{
+                font-size: 15px;
+                color: $w-text-16;
+            }
+
+            &:focus{
+                @include box-shadow(0px 20px 30px 0px rgba(8, 0, 42, 0.14));
+            }
+        }
+
+        & button{
+            height: 60px;
+            line-height: 60px;
+            padding: 0 53px;
+            background: $black-8;
+            color: $white;
+            font-weight: 600;
+            @include border-radius(30px);
+            &:hover{
+                @include box-shadow(0px 20px 30px 0px rgba(8, 0, 42, 0.14));
+            } 
+        }
+    }
+    &__features{
+        & ul{
+            & li{
+                display: inline-block;
+                font-size: 15px;
+                color: $white;
+                font-weight: 600;
+                position: relative;
+                padding-left: 24px;
+                margin-bottom: 15px;
+                &:not(:last-child){
+                    margin-right: 50px;
+                    @media #{$xs}{
+                        margin-right: 15px;
+                    }
+                }
+                &::after{
+                    position: absolute;
+                    content: '\4e';
+                    left: 0;
+                    top: 50%;
+                    @include transform(translateY(-50%));
+                    font-size: 15px;
+                    color: $white;
+                    font-family: 'ElegantIcons';
+                }
+            }
+        }
+    }
+    &__shape{
+        & img{
+            &.cta-4-shape{
+                position: absolute;
+                bottom: -77%;
+                right: 0;
+                z-index: -1;
+            }
+        }
+    }
+}

@@ -1,0 +1,302 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block navbar %}
+    {% include 'core/navbar_fixed.html' %}
+{% endblock %}
+
+{% block content %}
+    <style>
+    .timeline {
+  list-style: none;
+  padding: 20px 0 20px;
+  position: relative;
+}
+
+.timeline:before {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 3px;
+  background-color: #eeeeee;
+  left: 5%;
+  margin-left: -1.5px;
+}
+
+.timeline > li {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+  content: " ";
+  display: table;
+}
+
+.timeline > li:after {
+  clear: both;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+  content: " ";
+  display: table;
+}
+
+.timeline > li:after {
+  clear: both;
+}
+
+.timeline > li > .timeline-panel {
+  width: 90%;
+  float: left;
+  border: 1px solid #d4d4d4;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+
+.timeline > li > .timeline-panel:before {
+  position: absolute;
+  top: 26px;
+  right: -15px;
+  display: inline-block;
+  border-top: 15px solid transparent;
+  border-left: 15px solid #ccc;
+  border-right: 0 solid #ccc;
+  border-bottom: 15px solid transparent;
+  content: " ";
+}
+
+.timeline > li > .timeline-panel:after {
+  position: absolute;
+  top: 27px;
+  right: -14px;
+  display: inline-block;
+  border-top: 14px solid transparent;
+  border-left: 14px solid #fff;
+  border-right: 0 solid #fff;
+  border-bottom: 14px solid transparent;
+  content: " ";
+}
+
+.timeline > li > .timeline-badge {
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.4em;
+  text-align: center;
+  position: absolute;
+  top: 16px;
+  left: 5%;
+  margin-left: -25px;
+  background-color: #999999;
+  z-index: 100;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel {
+  float: right;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:before {
+  border-left-width: 0;
+  border-right-width: 15px;
+  left: -15px;
+  right: auto;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:after {
+  border-left-width: 0;
+  border-right-width: 14px;
+  left: -14px;
+  right: auto;
+}
+
+.timeline-badge.primary {
+  background-color: #2e6da4 !important;
+}
+
+.timeline-badge.success {
+  background-color: #3f903f !important;
+}
+
+.timeline-badge.warning {
+  background-color: #f0ad4e !important;
+}
+
+.timeline-badge.danger {
+  background-color: #d9534f !important;
+}
+
+.timeline-badge.info {
+  background-color: #5bc0de !important;
+}
+
+.timeline-title {
+  margin-top: 0;
+  color: inherit;
+}
+
+.timeline-body > p,
+.timeline-body > ul {
+  margin-bottom: 0;
+}
+
+.timeline-body > p + p {
+  margin-top: 5px;
+}
+    </style>
+
+    <!-- Page content-->
+      <div class="container">
+        <div class="row justify-content-center">
+          <!-- Content-->
+          <div class="col-lg-9 py-4 mb-2 mb-sm-0 pb-sm-5">
+            <div class="pb-4" style="max-width: 38rem;">
+              <!--nav aria-label="breadcrumb">
+                <ol class="py-1 my-2 breadcrumb">
+                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="#">Blog</a>
+                  </li>
+                  <li class="breadcrumb-item"><a href="#">Category</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Single post no sidebar</li>
+                </ol>
+              </nav-->
+              <h3>{{cand.hq_user.name}}</h3>
+            </div>
+            <!-- Post author + Sharing-->
+            <div class="row position-relative no-gutters align-items-center border-top border-bottom mb-4">
+              <div class="col-md-8 py-3 pr-md-3">
+                <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+                  <div class="media media-ie-fix align-items-center mr-grid-gutter"><a class="d-block" href="#"><img class="rounded-circle mr-1" width="64" src="{{ cand.thumbnail_url }}" alt="{{cand.hq_user.name}}"/></a>
+                    <div class="media-body pl-2">
+                      <h6 class="nav-heading mb-1"><a href="#">{{cand.title}}</a></h6>
+                      <div class="text-nowrap">
+                        <div class="meta-link font-size-xs"><i class="fe-map-pin mr-1 mt-n1"></i>&nbsp;{{ cand.city }}</div>
+                      </div>
+                    </div>
+                  </div><a class="btn btn-translucent-primary btn-sm" href="#">Hire Me</a>
+                </div>
+              </div>
+              <div class="d-none d-md-block position-absolute border-left h-100" style="top: 0; left: 67%; width: 1px;"></div>
+              <div class="col-md-4 pl-md-3 py-3">
+                <div class="d-flex align-items-center justify-content-center justify-content-md-end">
+                  <h6 class="text-nowrap my-2 mr-3">Follow me:</h6>
+                    {% if cand.linkedin_profile %}<a class="social-btn sb-outline sb-linkedin ml-2 my-2" href="https://www.linkedin.com/"{{ cand.linkedin_profile }}><i class="fe-linkedin"></i></a>{% endif %}
+                    {% if cand.twitter_profile %}<a class="social-btn sb-outline sb-twitter ml-2 my-2" href="https://twitter.com/{{ cand.twitter_profile }}"><i class="fe-twitter"></i></a>{% endif %}
+                    {% if cand.github_profile %}<a class="social-btn sb-outline sb-github ml-2 my-2" href="https://www.github.com/{{ cand.github_profile }}"><i class="fe-github"></i></a>{% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="bg-faded-primary rounded-lg p-4 mb-4">
+              <div class="p-md-3">
+                <blockquote class="blockquote mb-0">
+                  <p class="text-nav">{{ cand.summary }}</p>
+                </blockquote>
+              </div>
+            </div>
+              <h2 class="h3 pt-2 pb-4">Skills</h2>
+              <div class="row">
+                  {% for skill in skills %}
+                  <div class="col-md-6 mt-3">
+                      {{skill.name}}
+                      <div class="progress" style="height: 8px;">
+                          <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{ skill.percentage }}%" aria-valuenow="{{ skill.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                  </div>
+                  {% endfor %}
+              </div>
+              <h2 class="h3 pt-2 pb-4 mt-5">Work Experience</h2>
+          <div class="row">
+                <div class="col-md-12">
+                      <ul class="timeline">
+                          {%  for job in jobs %}
+                    <li class="timeline-inverted">
+                      <div class="timeline-badge info"><i class="fe-briefcase"></i></div>
+                      <div class="timeline-panel">
+                        <div class="timeline-heading">
+                          <h5 class="timeline-title"><img src="{% if job.company %}/media/{{ job.company.icon }}{% else %}/static/img/icons/company.png{% endif %}" class="mr-2" style="max-height: 32px;">{{job.designation}}</h5>
+                        </div>
+                        <div class="timeline-body">
+                            <h6> {% if job.company %}{{ job.company.name }}{% else %}{{ job.company_name_given }}{% endif %} <span class="text-muted ml-3">{{ job.get_job_type_display }}</span> </h6>
+                                <p class="text-muted mt-n2">
+                                    <span class="text-muted">{{ job.start_date }} - {% if job.end_date %}{{ job.end_date }} (<b>{{ job.start_date|timesince:job.end_date }}</b>){% else %}present{% endif %}</span>
+                                    {% if job.city %}<br>{{ job.city }}{% endif %}
+                                </p>
+                          <div class="text-black-50 ml-2 mt-2" style="border-left: 5px solid #739BED;padding-left: 1em;">
+                              {{ job.summary|safe }}
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                          {% endfor %}
+                  </ul>
+
+                </div>
+            </div>
+
+          <h2 class="h3 pt-2 pb-4 mt-3">Education</h2>
+          <div class="row">
+                <div class="col-md-12">
+                      <ul class="timeline">
+                          {%  for edu in edus %}
+                    <li class="timeline-inverted">
+                      <div class="timeline-badge info"><i class="fe-pen-tool"></i></div>
+                      <div class="timeline-panel">
+                        <div class="timeline-heading">
+                          <h5 class="timeline-title"><img src="{% if edu.college %}/media/{{ edu.college.icon }}{% else %}/static/img/icons/hat_icon.png{% endif %}" class="mr-2" style="max-height: 32px;"> {% if edu.college %}{{ edu.college.name }}{% else %}{{ edu.college_name }}{% endif %}</h5>
+                        </div>
+                        <div class="timeline-body">
+                            <h6> {{ edu.degree }} <span class="text-muted"> in </span> {{ edu.major }}</h6>
+                                <p class="text-muted mt-n2">
+                                    {{ edu.start_year }} - {{ edu.end_year }}
+                                </p>
+                          <p class="card-text">
+                              {% if edu.summary %}{{ edu.summary|safe }}{% endif %}
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                          {% endfor %}
+                  </ul>
+
+                </div>
+            </div>
+            <h2 class="h3 pt-2 pb-4 mt-3">Awards/Certificates</h2>
+          <div class="row">
+                <div class="col-md-12">
+                      <ul class="timeline">
+                          {%  for cert in certs %}
+                    <li class="timeline-inverted">
+                      <div class="timeline-badge info"><i class="fe-award"></i></div>
+                      <div class="timeline-panel">
+                        <div class="timeline-heading">
+                          <h4 class="timeline-title">{{ cert.issuer_name }}</h4>
+                        </div>
+                        <div class="timeline-body">
+                          <p class="text-muted mt-n2">
+                                    {{ cert.get_month_display }} - {{ cert.year }}
+                                </p>
+                                <p class="card-text">
+                                    {% if cert.summary %}{{ cert.summary| safe }}{% endif %}
+                                </p>
+                        </div>
+                      </div>
+                    </li>
+                          {% endfor %}
+                  </ul>
+
+                </div>
+            </div>
+          </div>
+        </div>
+{% endblock %}

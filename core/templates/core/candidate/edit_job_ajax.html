@@ -1,0 +1,93 @@
+{% load static %}
+{% load widget_tweaks %}
+<div class="modal-content border-0">
+                    <div class="modal-header border-0 bg-dark px-4">
+                        <h4 class="modal-title text-light">Edit Employment</h4>
+                        <button class="close text-light" type="button" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body px-4">
+                        <p class="font-size-ms text-muted">Provide details of your experience. It is advisable to include a point-wise summary of your role/achievements/learning.</p>
+                        <form class="needs-validation" method="post" action="/candidate/edit_employment" novalidate>
+                            {% csrf_token %}
+                            <input type="hidden" name="pub_id" value="{{ job.pub_id }}">
+                            <div class="row">
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-users"></i></span></div>
+                                    <input type="text" name="company_name_given" id="company_name_given_edit" value="{% if job.company %}{{ job.company.name }}{% else %}{{ job.company_name_given }}{% endif %}" class="form-control prepended-form-control" data-toggle="tooltip" title="Ex: Infosys" placeholder="Company" {% if job.company %}readonly{% endif %}>
+                                </div>
+                            <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-users"></i></span></div>
+                                    <input type="text" name="company_url_given" id="company_url_given_edit" value="{% if job.company %}{{ job.company.domain }}{% else %}{{ job.company_url_given }}{% endif %}" class="form-control prepended-form-control" data-toggle="tooltip" title="Ex: https://www.google.com" placeholder="Company URL" {% if job.company %}readonly{% endif %}>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-user"></i></span></div>
+                                    {% render_field emp_frm.designation class="form-control prepended-form-control" data-toggle="tooltip" title="Ex: Project Manager" placeholder="Title" %}
+                                </div>
+
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-activity"></i></span></div>
+                                    {% render_field emp_frm.job_type class="custom-select prepended-form-control" %}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col d-flex justify-content-between align-items-center form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox" name="edit_work_here" id="id_edit_work_here" {% if not job.end_date %}checked{% endif %}>
+                                    <label class="custom-control-label" for="id_edit_work_here">I work here currently</label>
+                                </div>
+                                </div>
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-map-pin"></i></span></div>
+                                    {% render_field emp_frm.city class="form-control prepended-form-control" data-toggle="tooltip" title="Ex: Bangalore, India" placeholder="Location" %}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-log-in"></i></span></div>
+                                    <input type="date" name="start_date" id="id_start_date_edit" class="form-control prepended-form-control" value="{{ job.start_date|date:"Y-m-d" }}" max="{% now "Y-m-d" %}" data-toggle="tooltip" title="Ex: 12-Jan-2015" placeholder="Start Date">
+
+
+                                </div>
+
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-log-out"></i></span></div>
+                                    <input name="end_date" id="id_end_date_edit"  type="date" class="form-control prepended-form-control" value="{{ job.end_date|date:"Y-m-d" }}" max="{% now "Y-m-d" %}" data-toggle="tooltip" title="Ex: 12-May-2018" placeholder="End Date">
+
+                                </div>
+                            </div>
+
+                            <div class="input-group-overlay form-group">
+                                <label for="id_summary_edit">Summary:</label>
+                                <textarea class="form-control" name="summary" id="id_summary_edit" rows="8" placeholder="Write a brief summary" required>{{ job.summary }}</textarea>
+                                <small class="text-muted">Keep it concise. A point-wise summary is preferred by employers over a long paragraph.</small>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-secondary btn-block" data-dismiss="modal"><span class="fe-arrow-left-circle mr-3"></span> Cancel</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary btn-block" type="submit"><span class="fe-save mr-3"></span> Save</button>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                <div class="modal-body text-center px-4 pt-2 pb-4">
+                    <hr>
+                </div>
+            </div>

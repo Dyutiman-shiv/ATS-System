@@ -1,0 +1,280 @@
+/*----------------------------------------*/
+/*  13. Promotion CSS START
+/*----------------------------------------*/
+
+.promotion{
+    &__bg{
+        position: relative;
+        z-index: 1;
+        &::after,
+        &::before{
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: $w-blue-5;
+            z-index: -1;
+            @media #{$sm}{
+                top: 0;
+                width: 100%;
+                height: 50%;
+
+            }
+            @media #{$xs}{
+                top: 0;
+                width: 100%;
+                height: 50%;
+
+            }
+        }
+        &::before{
+            right: 0;
+            left: auto;
+            background: $w-blue-6;
+            @media #{$sm}{
+                top: auto;
+                bottom: 0;
+            }
+            @media #{$xs}{
+                top: auto;
+                bottom: 0;
+            }
+        }
+        @media #{$sm}{
+            padding: 0;
+        }
+        @media #{$xs}{
+            padding: 20px 0;
+        }
+    }
+    &__title{
+        font-size: 34px;
+        color: $white;
+        margin-bottom: 15px;
+        @media #{$xs}{
+            font-size: 25px;
+        }
+    }
+    &__content{
+        @media #{$sm}{
+            padding: 50px 0;
+        }
+        & p{
+            color: $white;
+            font-weight: 600;
+            margin-bottom: 35px;
+        }
+        &.promotion__right{
+            @media #{$xs}{
+                padding-left: 0;
+                margin-top: 40px;
+            }
+        }
+        &-2{
+            @media #{$xl}{
+                padding-right: 20px;
+            }
+            @media #{$lg}{
+                padding-right: 0px;
+            }
+            @media #{$md}{
+                padding-right: 0px;
+            }
+            @media #{$xs}{
+                padding-right: 0px;
+            }
+            & p{
+                font-size: 15px;
+                color: $w-text-12;
+                margin-bottom: 45px;
+                &.promotion__sub{
+                    font-size: 17px;
+                    color: $black-6;
+                    font-weight: 700;
+                    margin-bottom: 23px;
+                }
+            }
+        }
+        &-4{
+            @media #{$md}{
+                margin-top: 50px;
+            }
+            @media #{$xs}{
+                padding-right: 30px;
+                margin-top: 50px;
+            }
+        }
+    }
+    &__shape{
+        & img{
+            position: absolute;
+            &.promotion-plus{
+                left: 3%;
+                top: 35%;
+                -webkit-animation: about-plus 5s linear infinite;
+                -moz-animation: about-plus 5s linear infinite; 
+                -o-animation: about-plus 5s linear infinite;
+                animation: about-plus 5s linear infinite; 
+                @media #{$xl}{
+                    top: 18%;
+                }
+                @media #{$lg}{
+                    top: 18%;
+                }
+                @media #{$xs}{
+                    bottom: 5%;
+                    right: 5%;
+                    top: auto;
+                    left: auto;
+                }
+            }
+            &.promotion-dot{
+                right: 16%;
+                top: 37%;
+                -webkit-animation: promotion-dot 4s linear 0s infinite alternate;
+                -moz-animation: promotion-dot 4s linear 0s infinite alternate; 
+                -o-animation: promotion-dot 4s linear 0s infinite alternate;
+                animation: promotion-dot 4s linear 0s infinite alternate;
+                @media #{$sm}{
+                    right: 60%;
+                }
+                @media #{$xs}{
+                    right: 60%;
+                }
+            }
+            &.promotion-triangle{
+                right: 5%;
+                top: 15%;
+                -webkit-animation: promotion-triangle 5s linear infinite;
+                -moz-animation: promotion-triangle 5s linear infinite; 
+                -o-animation: promotion-triangle 5s linear infinite;
+                animation: promotion-triangle 5s linear infinite;
+            }
+        }
+    }
+    &__thumb{
+        position: relative;
+        @media #{$sm}{
+            margin-bottom: 50px;
+        }
+        @media #{$xs}{
+            margin-bottom: 50px;
+        }
+        & img{
+            @include border-radius(10px);
+        }
+        &::after{
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba($color: $black-6, $alpha: .6);
+            @include border-radius(10px);
+        }
+        &-4{
+            z-index: 1;
+            & img{
+                &.promotion-4-big{
+                    margin-left: -30px;
+                    @include border-radius(20px);
+                    @include box-shadow(0px 30px 60px 0px rgba(2, 0, 35, 0.1));
+                    @media #{$lg}{
+                        margin-left: -60px;
+                    }
+                    @media #{$xs}{
+                        margin-left: 0px;
+                        width: 100%;
+                    }
+                }
+                &.promotion-4-sm{
+                    margin-left: 280px;
+                    margin-top: -240px;
+                    @include border-radius(20px);
+                    @include box-shadow(0px 30px 60px 0px rgba(2, 0, 35, 0.1));
+                    -webkit-animation: promotion-4-sm 2s linear infinite alternate;
+                    -moz-animation: promotion-4-sm 2s linear infinite alternate; 
+                    -o-animation: promotion-4-sm 2s linear infinite alternate;
+                    animation: promotion-4-sm 2s linear infinite alternate;
+                    @media #{$lg}{
+                        margin-left: 105px;
+                        margin-bottom: -180px;
+                    }
+                    @media #{$xs}{
+                        margin-left: 50px;
+                        width: 80%;
+                        margin-top: -100px;
+                    }
+                }
+                &.promotion-4-circle{
+                    position: absolute;
+                    top: -113px;
+                    right: -20px;
+                    opacity: .3;
+                    z-index: -1;
+                    @media #{$lg}{
+                        width: 100%;
+                    }
+                    @media #{$xs}{
+                        width: 100%;
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+    &__play{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+        z-index: 1;
+        & img{
+            width: 17px;
+            height: 20px;
+        }
+    }
+}
+
+
+
+@keyframes promotion-plus{
+    0%{
+        @include transform(rotate(0deg));
+    }
+    100%{
+        @include transform(rotate(360deg));
+    }
+}
+
+
+
+@keyframes  promotion-triangle{
+    0%{
+        @include transform(rotate(0deg));
+    }
+    100%{
+        @include transform(rotate(360deg));
+    }
+}
+
+@keyframes promotion-dot{
+    0%{
+        @include transform(translateX(100px));
+    }
+    100%{
+        @include transform(translateX(0px));
+    }
+}
+
+@keyframes promotion-4-sm{
+    0%{
+      transform: translateY(-50px);
+    }
+    100%{
+      transform: translateY(0px);
+    }
+}

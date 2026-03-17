@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<br>Name: {{ email.name }}
+<br>Is a Company: {{ email.is_company }}
+<br>Mobile: {{ email.mobile }}
+<br>Email: {{ email.email }}
+<br>Subject: {{ email.subject }}
+<br>Message:<br>
+------------------------------<br>
+{{ email.message }}
+<br>--------------------------
+
+
+</body>
+</html>

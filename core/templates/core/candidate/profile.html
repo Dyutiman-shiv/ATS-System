@@ -1,0 +1,330 @@
+{% extends 'core/candidate/base_loggedin.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+     <!-- Page content-->
+      <div class="container bg-overlay-content pb-4 mb-md-3" style="margin-top: -350px;">
+        <div class="row">
+            {% include 'core/candidate/sidebar.html' %}
+          <!-- Content-->
+          <div class="col-lg-8">
+            <div class="d-flex flex-column h-100 bg-light rounded-lg box-shadow-lg p-4">
+              <div class="py-2 p-md-3">
+               <div class="row">
+                     {% for message in messages %}
+                      <div class="col-12 alert {% if message.tags == "error" %}alert-danger{% else %}alert-success{% endif %} alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ message| safe }}
+                      </div>
+                    {% endfor %}
+                </div>
+                <!-- Title + Delete link-->
+                <div class="d-sm-flex align-items-center justify-content-between pb-4 text-center text-sm-left">
+                  <h1 class="h3 mb-2 text-nowrap">About Me</h1>
+                    <!--a class="btn btn-link text-danger font-weight-medium btn-sm mb-2" href="#"><i class="fe-trash-2 font-size-base mr-2"></i>Delete account</a-->
+                </div>
+                  <form class="needs-validation" method="post" enctype="multipart/form-data" novalidate>
+                      {% csrf_token %}
+                <!-- Content-->
+                <div class="bg-secondary rounded-lg p-4 mb-4">
+                  <div class="media d-block d-sm-flex align-items-center"><img class="d-block rounded-circle mx-auto mb-3 mb-sm-0" width="110" src="{{ cand.thumbnail_url }}" alt="{{ cand.hq_user.name }}"/>
+                    <div class="media-body pl-sm-3 text-center text-sm-left">
+
+                      <label class="btn btn-light box-shadow btn-sm mb-2 file-attachment-btn" for="id_profile_image"><i class="fe-refresh-cw mr-2"></i>Change avatar
+                          <input type="file" name="profile_image" id="id_profile_image" hidden>
+                      </label>
+                        <div class="p mb-0 font-size-ms text-muted"><span id="id_filename">We will automatically focus and crop the image.</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="account-fn">Name</label>
+                        {% render_field hq_user_form.name class="form-control" placeholder="Ex: John Doe" %}
+
+                    </div>
+                  </div>
+                    <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="id_title">Title</label>
+                        {% render_field cand_form.title class="form-control" placeholder="Ex: Product Manager, UI Designer" %}
+                    </div>
+                  </div>
+                  <!--div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="account-ln">Legal Name</label>
+                      <input class="form-control" type="text" id="account-ln" value="Amanda S Wilson">
+                    </div>
+                  </div-->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="account-email">Email address</label>
+                        <input type="email" class="form-control" placeholder="{{cand.hq_user.email}}" disabled>
+                    </div>
+                  </div>
+
+
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="account-username">Mobile</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text">+91</span></div>
+                          {% render_field hq_user_form.mobile class="form-control" %}
+                      </div>
+                    </div>
+                  </div>
+                  <!--div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="account-country">Country</label>
+                      <select class="custom-select" id="account-country">
+                        <option value>Select country</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="France">France</option>
+                        <option value="Germany">Germany</option>
+                        <option value="Madagascar">Madagascar</option>
+                        <option value="Spain">Spain</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="USA" selected>USA</option>
+                      </select>
+                    </div>
+                  </div-->
+                    <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="account-email">Gender</label>
+                        {% render_field cand_form.gender class="custom-select" %}
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="account-city">Location</label>
+                        {% render_field cand_form.city class="form-control" %}
+                    </div>
+                  </div>
+                </div>
+                  <div class="row bg-secondary rounded-sm">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="account-city">Summary</label>
+                            <textarea class="form-control" type="text" rows="3" id="id_summary" name="summary" placeholder="Write about you" >{{ cand.summary }}</textarea>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
+
+                  <div class="col-md-12 mt-3">
+                      <small>The below profile links will be available on your public profile and in your resume if supported by the template.</small>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="fe-linkedin mr-2"></i> linkedin.com/</span></div>
+                          {% render_field cand_form.linkedin_profile class="form-control" %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="fe-twitter mr-2"></i> twitter.com/</span></div>
+                          {% render_field cand_form.twitter_profile class="form-control" %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="fe-github mr-2"></i> github.com/</span></div>
+                          {% render_field cand_form.github_profile class="form-control" %}
+                      </div>
+                    </div>
+                  </div>
+                      <div class="col-md-12">
+                          <div class="custom-control custom-checkbox d-block mt-2">
+                          {% render_field cand_form.allow_contact class="custom-control-input" %}
+                        <!--input class="custom-control-input" type="checkbox" name="allow_contact" id="allow-contact" {% if cand.allow_contact %}checked{% endif %}-->
+                        <label class="custom-control-label" for="id_allow_contact">Allow companies to contact me for relevant jobs</label>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-12">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+                      <button class="btn btn-primary mt-3 mt-sm-0 ml-auto" type="submit"><i class="fe-save font-size-lg mr-2"></i>Save changes</button>
+                    </div>
+                  </div>
+                </div>
+                  </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- Add Skill Modal-->
+    <div class="modal fade" id="modal-add-skill" tabindex="-1">
+
+        <style>
+            #full-stars-example-two {
+          /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
+          /* make hover effect work properly in IE */
+          /* hide radio inputs */
+          /* hide 'none' input from screenreaders */
+          /* set icon padding and size */
+          /* set default star color */
+          /* if any input is checked, make its following siblings grey */
+          /* make all stars orange on rating group hover */
+          /* make hovered input's following siblings grey on hover */
+        }
+        #full-stars-example-two .rating-group {
+          display: inline-flex;
+        }
+        #full-stars-example-two .rating__icon {
+          pointer-events: none;
+        }
+        #full-stars-example-two .rating__input {
+          position: absolute !important;
+          left: -9999px !important;
+        }
+        #full-stars-example-two .rating__input--none {
+          display: none;
+        }
+        #full-stars-example-two .rating__label {
+          cursor: pointer;
+          padding: 0 0.1em;
+          font-size: 2rem;
+        }
+        #full-stars-example-two .rating__icon--star {
+          color: slateblue;
+        }
+        #full-stars-example-two .rating__input:checked ~ .rating__label .rating__icon--star {
+          color: #ddd;
+        }
+        #full-stars-example-two .rating-group:hover .rating__label .rating__icon--star {
+          color: slateblue;
+        }
+        #full-stars-example-two .rating__input:hover ~ .rating__label .rating__icon--star {
+          color: #ddd;
+        }
+
+        </style>
+
+
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content border-0">
+                    <div class="modal-header border-0 bg-dark px-4">
+                        <h4 class="modal-title text-light">Add Skill</h4>
+                        <button class="close text-light" type="button" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body px-4">
+                        <p class="font-size-ms text-muted">Add your primary skills and their ratings in a scale of 1 to 5.</p>
+                        <form class="needs-validation" method="post" action="/candidate/add_skill" novalidate>
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-check-square"></i></span>
+                                    </div>
+                                    <input name="skill_name" class="form-control prepended-form-control" placeholder="Skill Name">
+                                </div>
+
+                                <div id="full-stars-example-two" class="col form-group text-center mt-n2">
+                                    <div class="rating-group">
+                                        <!--input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio"-->
+                                        <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="skill_rating5" id="rating3-1" value="1" type="radio">
+                                        <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="skill_rating5" id="rating3-2" value="2" type="radio">
+                                        <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="skill_rating5" id="rating3-3" value="3" type="radio" checked>
+                                        <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="skill_rating5" id="rating3-4" value="4" type="radio">
+                                        <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <input class="rating__input" name="skill_rating5" id="rating3-5" value="5" type="radio">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-secondary btn-block" data-dismiss="modal"><span class="fe-arrow-left-circle mr-3"></span> Cancel</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary btn-block" type="submit"><span class="fe-plus-circle mr-3"></span> Add</button>
+                                </div>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                <div class="modal-body text-center px-4 pt-2 pb-4">
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Skill Modal-->
+    <div class="modal fade" id="modal-edit-skill" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document" id="edit_skill_content">
+        </div>
+    </div>
+{% endblock %}
+{% block body_end %}
+    <script src="https://lukasoppermann.github.io/html5sortable/html5sortable.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <script>
+
+    </script>
+    <script>
+     // Show the name of the file for custom file input
+    $("#id_profile_image").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $("#id_filename").html(fileName);
+    });
+    $('#modal-edit-skill').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget); // Button that triggered the modal
+          var skill_id = button.data('skillid');
+          var url = '/candidate/edit_skill_ajax/' + skill_id;
+          $("#edit_skill_content").load(url, function () {
+              ClassicEditor.create(document.querySelector('#editor1'))
+          });
+        });
+    // Enable Sortable
+    sortable('.o-sortable', {
+        forcePlaceholderSize: true,
+        placeholderClass: 'ph-class',
+        hoverClass: 'bg-maroon yellow'
+    });
+    sortable('.o-sortable')[0].addEventListener('sortupdate', function(e) {
+
+    console.log(e.detail);
+    //alert(e.detail.origin.index);
+    //alert(e.detail.destination.index);
+    $.get('/candidate/replace_skills_order/'+e.detail.origin.index+'/'+e.detail.destination.index);
+
+    /*
+    This event is triggered when the user stopped sorting and the DOM position has changed.
+
+    e.detail.item - {HTMLElement} dragged element
+
+    Origin Container Data
+    e.detail.origin.index - {Integer} Index of the element within Sortable Items Only
+    e.detail.origin.elementIndex - {Integer} Index of the element in all elements in the Sortable Container
+    e.detail.origin.container - {HTMLElement} Sortable Container that element was moved out of (or copied from)
+    e.detail.origin.itemsBeforeUpdate - {Array} Sortable Items before the move
+    e.detail.origin.items - {Array} Sortable Items after the move
+
+    Destination Container Data
+    e.detail.destination.index - {Integer} Index of the element within Sortable Items Only
+    e.detail.destination.elementIndex - {Integer} Index of the element in all elements in the Sortable Container
+    e.detail.destination.container - {HTMLElement} Sortable Container that element is moved into (or copied into)
+    e.detail.destination.itemsBeforeUpdate - {Array} Sortable Items before the move
+    e.detail.destination.items - {Array} Sortable Items after the move
+    */
+});
+</script>
+{% endblock %}

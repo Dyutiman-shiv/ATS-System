@@ -1,0 +1,110 @@
+/*----------------------------------------*/
+/*  19. PAGE TITLE CSS START
+/*----------------------------------------*/
+
+
+.page__title{
+    &-height{
+        min-height: 400px;
+    }
+    &-wrapper{
+        margin-bottom: 6px;
+        & h3{
+            font-size: 60px;
+            color: $white;
+            margin-bottom: 15px;
+            @media #{$md}{
+                font-size: 45px;
+            }
+            @media #{$sm}{
+                font-size: 35px;
+            }
+            @media #{$xs}{
+                font-size: 35px;
+            }
+        }
+        &-2{
+           & h3{
+                font-size: 40px;
+                @media #{$xs}{
+                    font-size: 30px;
+                }
+           }
+        }
+
+        & .breadcrumb{
+            margin-bottom: 0;
+            & .breadcrumb-item{
+                &.active{
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: $white;
+                    &::before{
+                        content: '.';
+                        font-family: $open;
+                        font-size: 30px;
+                        color: $white;
+                        line-height: 12px;
+                        padding-right: 14px;
+                    }
+                }
+                & a{
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: $white;
+                }
+
+                & + .breadcrumb-item{
+                    padding-left: 14px;
+                }
+            }
+        }
+    }
+    &-shape{
+        & img{
+            position: absolute;
+            z-index: -1;
+            &.page-title-dot{
+                left: 32%;
+                bottom: 10%;
+            }
+            &.page-title-dot-2{
+                right: 19%;
+                top: 20%;
+            }
+            &.page-title-dot-3{
+                right: 9%;
+                top: 6%;
+            }
+            &.page-title-dot-4{
+                left: 0;
+                top: 21%;
+            }
+            &.page-title-plus{
+                right: 0;
+                bottom: -17%;
+                
+            }
+            &.page-title-triangle{
+                left: 19%;
+                top: 32%;
+                -webkit-animation: page-triangle 5s linear  infinite;
+                -moz-animation: page-triangle 5s linear  infinite; 
+                -o-animation: page-triangle 5s linear  infinite;
+                animation: page-triangle 5s linear  infinite; 
+            }
+        }
+    }
+}
+
+
+
+@keyframes page-triangle {
+    0%{
+        @include transform(rotate(0deg));
+        }
+        100%{
+            @include transform(rotate(360deg));
+        }
+    }
+    

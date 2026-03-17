@@ -1,0 +1,77 @@
+/*----------------------------------------*/
+/*  15. WHY CSS START
+/*----------------------------------------*/
+
+.why{
+    &__area{}
+    &__item{
+        padding: 47px 25px;
+        padding-bottom: 49px;
+        @include box-shadow(0px 20px 40px 0px rgba(10, 0, 48, 0.08));
+        @include border-radius(4px);
+    }
+    &__icon{
+        & i{
+            font-size: 30px;
+            color: $w-purple-4;
+        }
+    }
+    &__content{
+        & p{
+            font-size: 12px;
+            color: $w-text-8;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+    }
+    &__title{
+        font-size: 36px;
+        color: $black-4;
+        margin-bottom: 2px;
+
+        @media #{$lg}{
+            font-size: 30px;
+        }
+        @media #{$sm}{
+            font-size: 25px;
+        }
+    }
+    &__features{
+        margin-top: 85px;
+        padding: 42px 40px;
+        padding-bottom: 53px;
+        @include border-radius(10px);
+        @include box-shadow(0px 20px 40px 0px rgba(10, 0, 48, 0.08));
+
+        @media #{$xl}{
+            margin-top: 87px;
+        }
+        @media #{$lg}{
+            margin-top: 80px;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+        & ul{
+            margin-bottom: 45px;
+            & li{
+                font-size: 18px;
+                color: $black-4;
+                padding-left: 28px;
+                position: relative;
+                &:not(:last-child){
+                    margin-bottom: 25px;
+                }
+                &::after{
+                    position: absolute;
+                    content: '\f00c';
+                    font-family: $fontawesome;
+                    font-size: 15px;
+                    color: $black-4;
+                    left: 0;
+                    top: 1px;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+}

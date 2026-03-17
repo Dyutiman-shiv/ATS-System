@@ -1,0 +1,80 @@
+{% load static %}
+{% load widget_tweaks %}
+            <div class="modal-content border-0">
+                    <div class="modal-header border-0 bg-dark px-4">
+                        <h4 class="modal-title text-light">Add education</h4>
+                        <button class="close text-light" type="button" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body px-4">
+                        <p class="font-size-ms text-muted">Provide details of your education. It is advisable to include a point-wise summary of your major activities, achievements and memberships etc.</p>
+                        <form class="needs-validation" method="post" action="/candidate/edit_education" novalidate>
+                            {% csrf_token %}
+                            <input type="hidden" name="pub_id" value="{{ edu.pub_id }}">
+
+                            <div class="row">
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-home"></i></span></div>
+                                    {% render_field edu_frm.college_name class="form-control prepended-form-control" placeholder="College Name"%}
+                                </div>
+
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-link"></i></span></div>
+                                    {% render_field edu_frm.college_url class="form-control prepended-form-control" placeholder="College URL"%}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-bookmark"></i></span></div>
+                                    {% render_field edu_frm.degree class="form-control prepended-form-control" placeholder="Degree" %}
+                                </div>
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-book"></i></span></div>
+                                    {% render_field edu_frm.major class="form-control prepended-form-control" placeholder="Major/Field of Study" %}
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-log-in"></i></span></div>
+                                    {% render_field edu_frm.start_year class="form-control prepended-form-control" data-toggle="tooltip" title="Ex: 2012" placeholder="Start Year" min=1950 max=2100 %}
+
+
+                                </div>
+
+                                <div class="col input-group-overlay form-group">
+                                    <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                            class="fe-log-out"></i></span></div>
+                                    {% render_field edu_frm.end_year class="form-control prepended-form-control" data-toggle="tooltip" title="Ex: 2016" placeholder="End Year" min=1950 max=2100 %}
+
+
+                                </div>
+                            </div>
+
+                            <div class="input-group-overlay form-group">
+
+                                <textarea class="form-control" name="summary" id="editor1" placeholder="Write a brief summary" required>{% if edu.summary %}{{edu.summary}}{% endif %}</textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-secondary btn-block" data-dismiss="modal"><span class="fe-arrow-left-circle mr-3"></span> Cancel</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary btn-block" type="submit"><span class="fe-save mr-3"></span> Save</button>
+                                </div>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                <div class="modal-body text-center px-4 pt-2 pb-4">
+                    <hr>
+                </div>
+            </div>
