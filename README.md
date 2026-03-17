@@ -1,4 +1,4 @@
-# HireQ.ai — Applicant Tracking System
+# Applicant Tracking System
 
 A Django-based Applicant Tracking System (ATS) for managing job descriptions, candidate applications, and recruitment workflows.
 
